@@ -10,3 +10,7 @@ def show_user(request, name):
 
 def show_review(request, review_text):
     return HttpResponse("You are looking at this review: " % review_text)
+
+
+def all1(request):
+    return render(request, "home/INDEX.html")
