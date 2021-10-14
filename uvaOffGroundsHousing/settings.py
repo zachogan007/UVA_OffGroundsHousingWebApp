@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'bootstrap5',
 
     'login',
-
+    
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -85,12 +85,8 @@ WSGI_APPLICATION = 'uvaOffGroundsHousing.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'b-16',
-        'USER': 'postgres',
-        'PASSWORD': 'db3240uva',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
