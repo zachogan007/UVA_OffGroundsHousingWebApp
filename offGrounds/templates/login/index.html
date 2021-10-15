@@ -1,12 +1,11 @@
 {% load socialaccount %}
-{% providers_media_js %}
 <html>
-  <head>
-    <title>Google Login</title>
-  </head>
-  <body>
-
-<a href="{% provider_login_url "google" %}">Google Connect</a>
-
-  </body>
+<body>
+  <h1> My Google OAuth Project </h1>
+  {% if user.is_authenticated %}
+  <p>Welcome, You are loggined in as {{user.username }}</p>
+  {%else%}
+  <a href="{% provider_login_url 'google' %}">Login With Google</a>
+  {%endif%}
+</body>
 </html>
