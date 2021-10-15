@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+930=p7!inly6elnsyk3qh2b(xtyqcy=0mgze-nm!k0^v2#2a=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
+
+    'login',
+    
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -61,7 +64,7 @@ ROOT_URLCONF = 'uvaOffGroundsHousing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,12 +85,8 @@ WSGI_APPLICATION = 'uvaOffGroundsHousing.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'b-16',
-        'USER': 'postgres',
-        'PASSWORD': 'db3240uva',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -158,12 +157,13 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-SITE_ID = 3
+SITE_ID = 1
 LOGIN_REDIRECT_URL ='/'
-LOGOUT_REDIRECT_URL = '/'
 
 import django_heroku
 
 django_heroku.settings(locals())
+
+
 
 
