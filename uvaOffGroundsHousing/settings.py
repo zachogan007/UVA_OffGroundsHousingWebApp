@@ -169,9 +169,10 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL ='/'
-import django_heroku
+if 'HEROKU' in os.environ:
+    import django_heroku
 
-django_heroku.settings(locals())
+    django_heroku.settings(locals())
 
 
 
