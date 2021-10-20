@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -94,6 +95,11 @@ DATABASES = {
     }
 }
 
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -162,9 +168,10 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL ='/'
-import django_heroku
+if 'HEROKU' in os.environ:
+    import django_heroku
 
-django_heroku.settings(locals())
+    django_heroku.settings(locals())
 
 
 
