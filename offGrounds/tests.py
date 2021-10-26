@@ -1,6 +1,5 @@
 from django.test import TestCase
 
-
 # run this command: py manage.py test
 
 
@@ -12,6 +11,3 @@ class DummyTests(TestCase):
         This is a dummy test case
         """
         self.assertIs(True, True)
-
-
-

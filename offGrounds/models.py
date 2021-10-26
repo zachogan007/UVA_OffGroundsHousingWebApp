@@ -15,4 +15,6 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
-
+#class Maps(models.Model):
+   # address = map_fields.AddressField(max_length = 200)
+   # geo_location = map_fields.GeoLocationField(max_length=100)
