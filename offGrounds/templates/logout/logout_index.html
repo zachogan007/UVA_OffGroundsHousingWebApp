@@ -1,0 +1,12 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<html>
+<body>
+<h1> UVA Off-Grounds Housing </h1>
+<p> You have been logged out </p>
+<a href="{% provider_login_url 'google' %}">Login With Google</a>
+</body>
+</html>

@@ -1,9 +1,13 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import include, path
 
+from django.views.generic import TemplateView
 from . import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path('', views.index, name='index'),
-   # path('user/', views.show_user(), name='show_user'),
-   # path('review/', views.show_review(), name='show_review'),
+    path('', TemplateView.as_view(template_name="login/index.html")),
+    path('accounts/', include('allauth.urls')),
+    path('maps/', views.default_map, name="default"),
+    path('logout/', views.logout_view, name="logout_index"),
 ]
