@@ -16,5 +16,5 @@ def default_map(request):
     # found in the Mapbox account settings and getting started instructions
     # see https://www.mapbox.com/account/ under the "Access tokens" section
     mapbox_access_token = 'pk.my_mapbox_access_token'
-    return render(request, 'default.html',
+    return render(request, 'maps/default.html',
                   { 'mapbox_access_token': mapbox_access_token })
