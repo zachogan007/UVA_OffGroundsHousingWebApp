@@ -2,6 +2,9 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navigation</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,6 +21,7 @@
 </nav>
 
 
+
 <html>
 <head>
     <title>Interactive maps for Django web apps</title>
@@ -25,16 +29,26 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-<h1>Map time!</h1>
-<div id='map' style='width: 400px; height: 300px;'></div>
+<h1>Map Search</h1>
+<div id='map' style='width: 800px; height: 450px;'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWIxNiIsImEiOiJja3Y4c21jMWo5eHhwMm9vOGZuZXlnZW05In0.a-KfD2aiSDVojLVb1CauUA';
 var map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/mapbox/satellite-streets-v10',
-center: [-77.03, 38.91],
+style: 'mapbox://styles/mapbox/streets-v10',
+center: [-78.51, 38.03],
 zoom: 9
 });
+const geocoder = new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl,
+  marker: true,
+  placeholder: 'Search for places in Charlottesville',
+  bbox: [-78.582, 37.971, -78.438, 38.089],
+});
+
+
+map.addControl(geocoder);
 </script>
 </body>
 </html>
