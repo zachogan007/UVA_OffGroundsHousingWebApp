@@ -24,3 +24,6 @@ def default_map(request):
 def logout_view(request):
     logout(request)
     return render(request, 'logout/logout_index.html')
+
+def search_view(request):
+    return render(request, 'homesearch/search.html')

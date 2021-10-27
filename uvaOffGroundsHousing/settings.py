@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-+930=p7!inly6elnsyk3qh2b(xtyqcy=0mgze-nm!k0^v2#2a=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com', '127.0.0.1', 'localhost']
 
 
@@ -98,7 +99,6 @@ if 'test' in sys.argv:
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

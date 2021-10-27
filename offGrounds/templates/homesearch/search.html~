@@ -1,7 +1,3 @@
-{% load socialaccount %}
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navigation</a>
@@ -11,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="/login">Home</a>
-      <a class="nav-item nav-link active" href="/homesearch">Search Homes</a>
+      <a class="nav-item nav-link disabled" href="#">Search New Homes</a>
       <a class="nav-item nav-link active" href="/maps">Maps</a>
       <a class="nav-item nav-link active" href="/logout">Logout</a>
     </div>

@@ -10,10 +10,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/login">Home</a>
-      <a class="nav-item nav-link active" href="/homesearch">Search Homes</a>
-      <a class="nav-item nav-link active" href="/maps">Maps</a>
-      <a class="nav-item nav-link active" href="/logout">Logout</a>
+      <a class="nav-item nav-link active" href="{% url 'login:index' %">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link disabled" href="#">Search New Homes</a>
+      <a class="nav-item nav-link active" href="{% url 'maps:default' %">Maps</a>
+      <a class="nav-item nav-link active" href="{% url 'logout:logout_index' %">Logout</a>
     </div>
   </div>
 </nav>
@@ -23,6 +23,8 @@
   <h1> UVA Off-Grounds Housing </h1>
   {% if user.is_authenticated %}
   <p>Welcome, you are logged in as {{user.username }}.</p>
+  <a href="/maps">Maps</a>
+  <a href="/logout">Logout</a>
   {%else%}
   <a href="{% provider_login_url 'google' %}">Login With Google</a>
   {%endif%}
