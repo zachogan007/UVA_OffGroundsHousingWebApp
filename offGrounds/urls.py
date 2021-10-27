@@ -11,4 +11,5 @@ urlpatterns = [
     path('maps/', views.default_map, name="default"),
     path('logout/', views.logout_view, name="logout_index"),
     path('login/', TemplateView.as_view(template_name="login/index.html")),
+    path('homesearch/', views.search_view, name="search"),
 ]
