@@ -24,4 +24,5 @@ urlpatterns = [
     path('offGrounds/', include('offGrounds.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('maps/', include('maps.urls')),
 ]
