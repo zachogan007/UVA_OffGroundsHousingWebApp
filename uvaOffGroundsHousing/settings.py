@@ -85,11 +85,17 @@ WSGI_APPLICATION = 'uvaOffGroundsHousing.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'b-16',
-        'USER': 'postgres',
-        'PASSWORD': 'db3240uva',
-        'HOST': '',
-        'PORT': '',
+        'NAME': 'db7dljkeaes203',
+        'USER': 'yrdvjvyjxwhosn',
+        'PASSWORD': 'dac5b28150b1414d31e72b887038da664d835dfe90332d555f2b83e057b01163',
+        'HOST': 'ec2-44-195-209-130.compute-1.amazonaws.com',
+        'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'b-16',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'db3240uva',
+        # 'HOST': '',
+        # 'PORT': '',
     }
 }
 
@@ -165,7 +171,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-SITE_ID = 3
+SITE_ID = 1
 LOGIN_REDIRECT_URL ='/'
 if 'HEROKU' in os.environ:
     import django_heroku
