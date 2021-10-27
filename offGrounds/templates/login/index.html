@@ -1,9 +1,14 @@
 {% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 <html>
 <body>
   <h1> UVA Off-Grounds Housing </h1>
   {% if user.is_authenticated %}
   <p>Welcome, you are logged in as {{user.username }}.</p>
+  <a href="/maps">Maps</a>
   {%else%}
   <a href="{% provider_login_url 'google' %}">Login With Google</a>
   {%endif%}

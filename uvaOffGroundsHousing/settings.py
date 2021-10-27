@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+930=p7!inly6elnsyk3qh2b(xtyqcy=0mgze-nm!k0^v2#2a=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com']
+ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
-
-    'login',
     
     'allauth',
     'allauth.account',
@@ -167,7 +165,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-SITE_ID = 1
+SITE_ID = 3
 LOGIN_REDIRECT_URL ='/'
 if 'HEROKU' in os.environ:
     import django_heroku
