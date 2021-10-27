@@ -23,7 +23,8 @@ SECRET_KEY = 'django-insecure-+930=p7!inly6elnsyk3qh2b(xtyqcy=0mgze-nm!k0^v2#2a=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com']
+
+ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -38,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
-
     'login',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -83,11 +84,11 @@ WSGI_APPLICATION = 'uvaOffGroundsHousing.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'b-16',
-        'USER': 'postgres',
-        'PASSWORD': 'db3240uva',
-        'HOST': '',
-        'PORT': '',
+        'NAME': 'db7dljkeaes203',
+        'USER': 'yrdvjvyjxwhosn',
+        'PASSWORD': 'dac5b28150b1414d31e72b887038da664d835dfe90332d555f2b83e057b01163',
+        'HOST': 'ec2-44-195-209-130.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
@@ -96,7 +97,6 @@ if 'test' in sys.argv:
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
