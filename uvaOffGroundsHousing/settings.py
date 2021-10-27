@@ -136,13 +136,24 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+
+#**NOTE***************** these three keys we don't really need but they're just here, if they cause problem we can comment out
+GOOGLE_API_KEY = ""
+
+RECAPTCHA = "6LcCivkcAAAAABn5xspSDcQQmCHHALf4goAsfw-4"
+
+RECAPTCHA_SECRET_KEY = "6LcCivkcAAAAALYORtWd7aGpky6ZzLd5TC8KcVtU"
+#**end note******************************************
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 AUTHENTICATION_BACKENDS = (
