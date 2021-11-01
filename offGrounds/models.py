@@ -25,6 +25,4 @@ class User(models.Model):
     def logout(self):
         self.password = ""
         self.is_logged_in = False
-# class Maps(models.Model):
-# address = map_fields.AddressField(max_length = 200)
-# geo_location = map_fields.GeoLocationField(max_length=100)
+
