@@ -8,7 +8,7 @@ import httplib2
 from googleapiclient import _auth
 
 from django.test import TestCase
-from oauthlib.oauth1 import Client
+from django.test import Client
 
 from .models import User
 from .models import Review
@@ -29,7 +29,7 @@ from django.urls import resolve
 class UserTestCase(TestCase):
 
     def setUp(self):
-        User.objects.create(name="bob", year="first")
+        User.objects.create(name="bob")
 
     def test_to_string(self):
         # test the to string method for User
@@ -77,16 +77,31 @@ class GoogleAuthTestCase(TestCase):
                 "credentials.json", scopes=None, quota_project_id=None
             )
 
+    # User models the user account, needs to call set_password to actually sign in since default password is blank
+    def test_login_sim(self):
+        # c = Client()
+        user = User.objects.create(name="bob@gmail.com")
+        user.set_password("new_password")  # logged in should be true here
+        user.save()
+        login = user.is_logged_in
+        self.assertTrue(login)
 
-
-    """
+    def test_logout_sim(self):
+        user = User.objects.create(name="bob@gmail.com")
+        user.set_password("new_password")  # logged in should be true here
+        user.save()
+        user.logout()
+        user.save()
+        logged_out = user.is_logged_in
+        self.assertFalse(logged_out)
+        """
         def test_login_sim(self):
         self.c = Client()
-        self.user = User.objects.create(name="bob@gmail.com", year="first")
+        self.user = User.objects.create(name="bob@gmail.com",password="12345")
         self.user.set_password("newPassword")
         self.user.save()
-        self.user = authenticate(name="bob@gmail.com", year="first")
-        login = self.c.login(name="bob@gmail.com", year="first")
+        self.user = authenticate(name="bob@gmail.com", password="newPassword")
+        login = self.c.login(name="bob@gmail.com", password="newPassword")
         self.assertTrue(login)     
     
     def logout2_test_url(self):
@@ -99,6 +114,4 @@ class GoogleAuthTestCase(TestCase):
         self.assertTrue(html.startswith('html'))
         #self.assertTemplateUsed(response, 'logout_index.html')
      """
-# URGENT TO DO - figure out how to test google login!!!
-
 # testing ideas/approaches for urls: query against the website --> for example: do something like ..,url/list
