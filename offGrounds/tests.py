@@ -1,12 +1,13 @@
 import datetime
 
-
-"""
 import mock
+import google
 import google.auth.credentials
 import google_auth_httplib2
 import httplib2
-# from googleapiclient import _auth
+from googleapiclient import _auth
+"""
+
 """
 from django.test import TestCase
 # from django.test import Client
@@ -53,7 +54,7 @@ class ReviewTestCase(TestCase):
 
 # source: https://github.com/googleapis/google-api-python-client/blob/main/tests/test__auth.py
 class GoogleAuthTestCase(TestCase):
-    """
+
     def setUp(self):
         _auth.HAS_GOOGLE_AUTH = True
         _auth.HAS_OAUTH2CLIENT = False
@@ -78,7 +79,7 @@ class GoogleAuthTestCase(TestCase):
             default.assert_called_once_with(
                 "credentials.json", scopes=None, quota_project_id=None
             )
-    """
+
     # User models the user account, needs to call set_password to actually sign in since default password is blank
     def test_login_sim(self):
         # c = Client()
