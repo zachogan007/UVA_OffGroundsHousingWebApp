@@ -1,12 +1,13 @@
 import datetime
-import mock
 
+
+"""
+import mock
 import google.auth.credentials
 import google_auth_httplib2
 import httplib2
-
 # from googleapiclient import _auth
-
+"""
 from django.test import TestCase
 # from django.test import Client
 

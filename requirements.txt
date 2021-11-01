@@ -5,7 +5,6 @@ django-bootstrap-v5
 django-allauth
 
 mock~=4.0.3
-google~=3.0.0
 httplib2~=0.20.1
 requests~=2.26.0
 humanfriendly~=10.0
