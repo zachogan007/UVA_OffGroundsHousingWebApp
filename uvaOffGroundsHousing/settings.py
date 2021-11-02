@@ -140,7 +140,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #**NOTE***************** these three keys we don't really need but they're just here, if they cause problem we can comment out
 GOOGLE_API_KEY = ""
