@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
+<<<<<<< HEAD
     
+=======
+>>>>>>> 59ffa82f9a8a57edb79b7dbb0c864640c5e842e4
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -64,7 +67,7 @@ ROOT_URLCONF = 'uvaOffGroundsHousing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -165,13 +168,17 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-SITE_ID = 1
+SITE_ID = 3
 LOGIN_REDIRECT_URL ='/'
+<<<<<<< HEAD
 if 'HEROKU' in os.environ:
     import django_heroku
+=======
+LOGOUT_REDIRECT_URL = '/'
+
+import django_heroku
+>>>>>>> 59ffa82f9a8a57edb79b7dbb0c864640c5e842e4
 
     django_heroku.settings(locals())
-
-
 
 
