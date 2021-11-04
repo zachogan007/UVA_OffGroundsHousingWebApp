@@ -40,77 +40,6 @@ center: [-78.51, 38.03],
 zoom: 9
 });
 
-var Standard_marker = new mapboxgl.Marker()
-    .setLngLat([ -78.49314331668081, 38.032608564947076])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>The Standard</body>"))
-    .addTo(map)
-    console.log(Standard_marker.getPopup());
-
-var TheFlats_marker = new mapboxgl.Marker()
-    .setLngLat([-78.49365922832396, 38.032396846013455])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>The Flats</body>"))
-    .addTo(map)
-    console.log(TheFlats_marker.getPopup());
-
-
-
-var PrestonSquare_marker = new mapboxgl.Marker()
-    .setLngLat([  -78.49316867250224, 38.043007220871495 ])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>Preston Square Apartments</body>"))
-    .addTo(map)
-    console.log(PrestonSquare_marker.getPopup());
-
-var Pav_marker = new mapboxgl.Marker()
-    .setLngLat([-78.50647848599499, 38.0500228044775])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>The Pavilion at North Grounds</body>"))
-    .addTo(map)
-    console.log(Pav_marker.getPopup());
-
-
-
-var Cav_marker = new mapboxgl.Marker()
-    .setLngLat([-78.51618518784511, 38.02817439395191])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>Cavalier Court Apartments</body>"))
-    .addTo(map)
-    console.log(Cav_marker.getPopup());
-
-var Crossroads_marker = new mapboxgl.Marker()
-    .setLngLat([-78.51440422026138, 38.02702467688287])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>Crossroads Apartments</body>"))
-    .addTo(map)
-    console.log(Crossroads_marker.getPopup());
-
-
-
-var _1800JPA_marker = new mapboxgl.Marker()
-    .setLngLat([ -78.50857668784514, 38.02820310593401 ])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>1800 JPA Apartments</body>"))
-    .addTo(map)
-    console.log(_1800JPA_marker.getPopup());
-
-var Wertland_marker = new mapboxgl.Marker()
-    .setLngLat([-78.49850598599521, 38.0355154377374])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>Wertland Square Apartments</body>"))
-    .addTo(map)
-    console.log(Wertland_marker.getPopup());
-
-
-
-var Grandmarc_marker = new mapboxgl.Marker()
-    .setLngLat([ -78.499821287845, 38.037187783128104])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>Grandmarc at the Corner/body>"))
-    .addTo(map)
-    console.log(Grandmarc_marker.getPopup());
-
-var Lark_marker = new mapboxgl.Marker()
-    .setLngLat([-78.49507742647421, 38.032702608467915])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>Lark on Main</body>"))
-    .addTo(map)
-    console.log(Lark_marker.getPopup());
-
-
-
-
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
   mapboxgl: mapboxgl,
@@ -119,6 +48,14 @@ const geocoder = new MapboxGeocoder({
   bbox: [-78.582, 37.971, -78.438, 38.089],
 });
 
+
+{% for p in pins_list %}
+    var pin_marker =  new mapboxgl.Marker()
+    .setLngLat([{{p.longitude}}, {{p.latitude}}])
+    .setPopup(new mapboxgl.Popup().setHTML("<body>{{p.name}}</body>"))
+    .addTo(map)
+    console.log(pin_marker.getPopup());
+{% endfor %}
 
 map.addControl(geocoder);
 </script>
