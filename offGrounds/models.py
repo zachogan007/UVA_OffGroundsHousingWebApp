@@ -25,3 +25,4 @@ class User(models.Model):
     def logout(self):
         self.password = ""
         self.is_logged_in = False
+
