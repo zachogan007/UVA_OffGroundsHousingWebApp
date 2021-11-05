@@ -3,10 +3,79 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="container-fluid">
+  <a class="navbar-brand text-white" href="#">Put name here</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="navbar-nav">
+        <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
+      </li>
+       <li>
+        <a class="nav-item nav-link active text-sm text-white" href="/maps">Maps</a>
+       </li>
+       <li>
+         <a class="nav-item nav-link active text-sm text-white" href="#">Reviews</a>
+       </li>
+       <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
+       </li>
+       <li>
+        <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
+       </li>
+      </ul>
+    </div>
+    </div>
+</nav>
+
 <html>
 <body>
-<h1> UVA Off-Grounds Housing </h1>
-<p> You have been logged out </p>
-<a href="{% provider_login_url 'google' %}">Login With Google</a>
+    <figure class="text-center">
+        <h1> UVA Off-Grounds Housing </h1>
+        <p> You have been logged out </p>
+        <button type="button" class="btn btn-light text-black" href="{% provider_login_url 'google' %}">Login With Google</button>
+
+    </figure>
 </body>
+
+  <footer class="fixed-bottom bg-light text-black">
+        <div class="container">
+            <div class="row align-items-start">
+              <div class="col">
+               Instagram icon
+              </div>
+              <div class="col">
+               Search Homes Link
+              </div>
+              <div class="col">
+
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col">
+                Twitter Icon
+              </div>
+              <div class="col">
+               Reviews Link
+              </div>
+              <div class="col">
+               Put Icon for something
+              </div>
+            </div>
+            <div class="row align-items-end">
+              <div class="col">
+                LinkedIn Icon
+              </div>
+              <div class="col">
+                Maps Link
+              </div>
+              <div class="col">
+
+              </div>
+            </div>
+        </div>
+    </footer>
 </html>
