@@ -20,13 +20,54 @@
 <html>
 <body>
 {% if user.is_authenticated %}
-  <h1> Search for Housing  </h1>
-  <p> Search bar goes here</p>
-  {% for loc in all_listings %}
-  <a class="nav-link" href="/homesearch/listing/{{loc.id}}">{{loc.name }} </a>
-  <p> {{loc.address}} , {{loc.num_beds}} beds, {{loc.num_baths}} baths,
-    {{loc.rent}} Monthly, {{loc.size}} Sq. Ft. </p>
-  {% endfor %}
+<h1> Search for Housing  </h1>
+
+<br>
+<div class="row">
+  <div class="col">
+    <div class="card card-body">
+      <form method="get">
+	{{myFilter.form}}
+	<button class="btn btn-primary" type="submit">
+	  Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+
+
+<div class="row">
+  <div class="col-md">
+    <div class="card card-body">
+      <table class="table table-sm">
+	<tr>
+	  <th>Name</th>
+	  <th>Address</th>
+	  <th>Beds</th>
+	  <th>Baths</th>
+	  <th>Rent</th>
+	  <th>Size</th>
+
+	</tr>
+	{% for loc in all_listings %}
+	<tr>
+	  <th><a class="nav-link" href="/homesearch/listing/{{loc.id}}">{{loc.name}}</a></th>
+	  <th>{{loc.address}}</th>
+	  <th>{{loc.num_beds}}</th>
+	  <th>{{loc.num_baths}}</th>
+	  <th>{{loc.rent}}</th>
+	  <th>{{loc.size}}</th>
+	</tr>
+
+	{% endfor %}
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
 {%else%}
 <p1> You are not logged in. Please go to the "Home" tab to log in.</p1>
 {%endif%}
