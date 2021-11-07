@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from django.views import generic
 from .models import Listing  # , Pin
 from django.utils import timezone
+from .filters import OrderFilter
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
@@ -34,8 +35,15 @@ def logout_view(request):
 
 def search_view(request):
     listings = Listing.objects.all()
+   # beds = Listing.objects.get(id=num_beds)
+   # baths = Listing.objects.get(id=num_baths)
+    
+    myFilter = OrderFilter(request.GET, queryset=listings)
+    listings = myFilter.qs
+    
+    context = {'listings':listings, 'myFilter':myFilter}
     return render(request, 'homesearch/search.html',
-                  {'all_listings': listings})
+                  {'all_listings': listings, 'myFilter':myFilter})
 
 # def listing_view(request):
 #     return render(request, 'homesearch/listing.html')

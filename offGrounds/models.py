@@ -27,9 +27,6 @@ class User(models.Model):
         self.password = ""
         self.is_logged_in = False
 
-<<<<<<< HEAD
-
-=======
 # class Pin(models.Model):
 #     name = models.CharField(max_length=200)
 #     longitude = models.FloatField(default=0.0)
@@ -51,4 +48,4 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.name
->>>>>>> 7fb4991a5f9b0d8190fb94de60a45515e89f5f1f
+
