@@ -1,5 +1,6 @@
 from django.db import models
-
+import datetime
+from django.utils import timezone
 
 # Create your models here.
 class Review(models.Model):
@@ -26,10 +27,24 @@ class User(models.Model):
         self.password = ""
         self.is_logged_in = False
 
-class Pin(models.Model):
+# class Pin(models.Model):
+#     name = models.CharField(max_length=200)
+#     longitude = models.FloatField(default=0.0)
+#     latitude = models.FloatField(default=0.0)
+#
+#     def __str__(self):
+#         return self.name
+
+class Listing(models.Model):
     name = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    num_beds = models.IntegerField(default=0)
+    num_baths = models.FloatField(default=0.0)
+    rent = models.FloatField(default=0.0)
+    size = models.FloatField(default=0.0)
     longitude = models.FloatField(default=0.0)
     latitude = models.FloatField(default=0.0)
+    pub_date = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         return self.name

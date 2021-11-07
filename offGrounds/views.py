@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.views import generic
-from .models import Pin
+from .models import Listing  # , Pin
+from django.utils import timezone
 
 
 def index(request):
@@ -22,9 +23,9 @@ def default_map(request):
     # found in the Mapbox account settings and getting started instructions
     # see https://www.mapbox.com/account/ under the "Access tokens" section
     mapbox_access_token = 'pk.my_mapbox_access_token'
-    pins = Pin.objects.all()
+    listings = Listing.objects.all()
     return render(request, 'maps/default.html',
-                  {'mapbox_access_token': mapbox_access_token, 'pins_list': pins})
+                  {'mapbox_access_token': mapbox_access_token, 'all_listings': listings})
 
 
 def logout_view(request):
@@ -33,4 +34,20 @@ def logout_view(request):
 
 
 def search_view(request):
-    return render(request, 'homesearch/search.html')
+    listings = Listing.objects.all()
+    return render(request, 'homesearch/search.html',
+                  {'all_listings': listings})
+
+# def listing_view(request):
+#     return render(request, 'homesearch/listing.html')
+
+
+class ListingView(generic.DetailView):
+    model = Listing
+    template_name = 'homesearch/listing.html'
+
+    def get_queryset(self):
+        """
+        Excludes any questions that aren't published yet.
+        """
+        return Listing.objects.filter(pub_date__lte=timezone.now())
