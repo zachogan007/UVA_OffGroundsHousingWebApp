@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import logout
 
-
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
 

@@ -26,3 +26,4 @@ class User(models.Model):
         self.password = ""
         self.is_logged_in = False
 
+
