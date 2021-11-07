@@ -23,6 +23,7 @@
 
 
 <html>
+{% if user.is_authenticated %}
 <head>
     <title>Interactive maps for Django web apps</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
@@ -49,10 +50,10 @@ const geocoder = new MapboxGeocoder({
 });
 
 
-{% for p in pins_list %}
+ {% for loc in all_listings %}
     var pin_marker =  new mapboxgl.Marker()
-    .setLngLat([{{p.longitude}}, {{p.latitude}}])
-    .setPopup(new mapboxgl.Popup().setHTML("<body>{{p.name}}</body>"))
+    .setLngLat([{{loc.longitude}}, {{loc.latitude}}])
+    .setPopup(new mapboxgl.Popup().setHTML('<a href="/homesearch/listing/{{loc.id}}" target="_blank"> {{loc.name}}</a>'))
     .addTo(map)
     console.log(pin_marker.getPopup());
 {% endfor %}
@@ -60,6 +61,9 @@ const geocoder = new MapboxGeocoder({
 map.addControl(geocoder);
 </script>
 </body>
+{%else%}
+<p1> You are not logged in. Please go to the "Home" tab to log in.</p1>
+{%endif%}
 </html>
 
 
