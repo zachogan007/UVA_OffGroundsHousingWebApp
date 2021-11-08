@@ -142,8 +142,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #**NOTE***************** these three keys we don't really need but they're just here, if they cause problem we can comment out
-GOOGLE_API_KEY = ""
-
+GOOGLE_MAPS_API_KEY = "AIzaSyDJ9zM-zm9k45kiQCObVXQV2Ww1yCL-CzU"
+YELP_API_KEY ="R3PUtBqtEJ_6iE2lfcZxy3uUMMzbtkBhCmVuJtOsnQa8iKiY_YkRfhXZlZbFHWWPbHItkRL3OZC1JgtXbo6wQDjkWKJW86v_B1O7dkrPaKH7YnnLG7QXPJgd2Vp4YXYx"
 RECAPTCHA = "6LcCivkcAAAAABn5xspSDcQQmCHHALf4goAsfw-4"
 
 RECAPTCHA_SECRET_KEY = "6LcCivkcAAAAALYORtWd7aGpky6ZzLd5TC8KcVtU"
