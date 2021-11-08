@@ -2,14 +2,13 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from django.contrib.auth import logout
+from django.views.generic import ListView
+
+from .models import Housing
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
-
-
-def show_user(request, name):
-    return HttpResponse("You are looking at this user: " % name)
 
 
 def show_review(request, review_text):
@@ -31,4 +30,15 @@ def logout_view(request):
 
 
 def search_view(request):
-    return render(request, 'homesearch/search.html')
+    context = {
+        'listings': Housing.objects.all()
+    }
+    return render(request, 'homesearch/search.html', context)
+
+
+def user_view(request):
+    return render(request, 'userprofile/profile_index.html')
+
+
+def listing_view(request):
+    return render(request, 'homesearch/detail.html')
