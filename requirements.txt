@@ -3,6 +3,8 @@ gunicorn
 django-heroku
 django-bootstrap-v5
 django-allauth
+django-filter
+Pillow
 
 mock~=4.0.3
 httplib2~=0.20.1

@@ -1,4 +1,6 @@
 from django.db import models
+import datetime
+from django.utils import timezone
 
 
 # Create your models here.
@@ -26,3 +28,21 @@ class User(models.Model):
         self.password = ""
         self.is_logged_in = False
 
+
+class Listing(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    num_beds = models.IntegerField(default=0)
+    num_baths = models.FloatField(default=0.0)
+    rent = models.FloatField(default=0.0)
+    size = models.FloatField(default=0.0)
+    longitude = models.FloatField(default=0.0)
+    latitude = models.FloatField(default=0.0)
+    pub_date = models.DateTimeField(default=timezone.now())
+    image = models.ImageField(upload_to='images')
+    laundry = models.CharField(max_length=200, default="", blank=True)
+    parking = models.CharField(max_length=200, default="", blank=True)
+    fitness = models.CharField(max_length=200, default="", blank=True)
+
+    def __str__(self):
+        return self.name
