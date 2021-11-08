@@ -35,18 +35,16 @@ def logout_view(request):
 
 def search_view(request):
     listings = Listing.objects.all()
+
    # beds = Listing.objects.get(id=num_beds)
    # baths = Listing.objects.get(id=num_baths)
     
     myFilter = OrderFilter(request.GET, queryset=listings)
     listings = myFilter.qs
     
-    context = {'listings':listings, 'myFilter':myFilter}
+    context = {'listings': listings, 'myFilter': myFilter}
     return render(request, 'homesearch/search.html',
-                  {'all_listings': listings, 'myFilter':myFilter})
-
-# def listing_view(request):
-#     return render(request, 'homesearch/listing.html')
+                  {'all_listings': listings, 'myFilter': myFilter})
 
 
 class ListingView(generic.DetailView):

@@ -2,6 +2,7 @@ from django.db import models
 import datetime
 from django.utils import timezone
 
+
 # Create your models here.
 class Review(models.Model):
     review_text = models.TextField(max_length=20000)
@@ -27,13 +28,6 @@ class User(models.Model):
         self.password = ""
         self.is_logged_in = False
 
-# class Pin(models.Model):
-#     name = models.CharField(max_length=200)
-#     longitude = models.FloatField(default=0.0)
-#     latitude = models.FloatField(default=0.0)
-#
-#     def __str__(self):
-#         return self.name
 
 class Listing(models.Model):
     name = models.CharField(max_length=200)
@@ -45,7 +39,10 @@ class Listing(models.Model):
     longitude = models.FloatField(default=0.0)
     latitude = models.FloatField(default=0.0)
     pub_date = models.DateTimeField(default=timezone.now())
+    image = models.ImageField(upload_to='images')
+    laundry = models.CharField(max_length=200, default="", blank=True)
+    parking = models.CharField(max_length=200, default="", blank=True)
+    fitness = models.CharField(max_length=200, default="", blank=True)
 
     def __str__(self):
         return self.name
-

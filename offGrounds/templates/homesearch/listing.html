@@ -22,7 +22,56 @@
 {% if user.is_authenticated %}
 <div class="listing">
     <h1> {{listing.name}}  </h1>
-    <p1> This will be a more info page for {{listing.name}} </p1>
+    <head>
+        <style>
+    {
+        box-sizing: border-box;
+    }
+    /* Set additional styling options for the columns*/
+    .column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left{
+  width: 50%;
+}
+
+.middle, .right  {
+  width: 25%;
+}
+
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+    </style>
+    </head>
+    <body>
+    <div class="row">
+        <div class="column left">
+            <p> {{listing.address}} </p>
+            <img src="{{ listing.image.url }}" width="500px"/>
+        </div>
+        <div class="column middle">
+            <b> Rent: </b> <p> {{listing.rent}} / Month </p>
+            <b> Beds: </b> <p> {{listing.num_beds}} </p>
+            <b> Baths: </b> <p> {{listing.num_baths}} </p>
+            <b> Size: </b> <p> {{listing.size}} Sq. Ft.</p>
+        </div>
+        <div class="column right">
+            <b> Laundry: </b> <p> {{listing.laundry}} </p>
+            <b> Parking: </b> <p> {{listing.parking}} </p>
+            <b> Fitness: </b> <p> {{listing.fitness}} </p>
+            <b> Date Published: </b> <p> {{listing.pub_date}} </p>
+        </div>
+    </div>
+    </body>
+
     {%else%}
     <p1> You are not logged in. Please go to the "Home" tab to log in.</p1>
     {%endif%}
