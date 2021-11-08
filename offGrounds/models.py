@@ -1,4 +1,6 @@
 from django.db import models
+import datetime
+from django.utils import timezone
 
 
 # Create your models here.
@@ -27,31 +29,24 @@ class User(models.Model):
         self.is_logged_in = False
 
 
-class Housing(models.Model):
-    property_name = models.TextField(max_length=2000)
-    address = models.TextField(default="", max_length=2000)
-    bed = models.BigIntegerField(default=0)
-    bath = models.DecimalField(default=0, decimal_places=1, max_digits=2)
-    area = models.DecimalField(default=0, decimal_places=2, max_digits=6)
-    description = models.TextField(default="", max_length=2000)
+# class Pin(models.Model):
+#     name = models.CharField(max_length=200)
+#     longitude = models.FloatField(default=0.0)
+#     latitude = models.FloatField(default=0.0)
+#
+#     def __str__(self):
+#         return self.name
 
-    def get_property_name(self):
-        return self.property_name
-
-    def get_address(self):
-        return self.address
-
-    def get_bed(self):
-        return "Beds: " + self.bed
-
-    def get_bath(self):
-        return "Baths: " + self.bath
-
-    def get_area(self):
-        return self.area + " sq ft"
-
-    def get_description(self):
-        return self.description
+class Listing(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    num_beds = models.IntegerField(default=0)
+    num_baths = models.FloatField(default=0.0)
+    rent = models.FloatField(default=0.0)
+    size = models.FloatField(default=0.0)
+    longitude = models.FloatField(default=0.0)
+    latitude = models.FloatField(default=0.0)
+    pub_date = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
-        return self.get_property_name()
+        return self.name
