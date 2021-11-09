@@ -1,17 +1,22 @@
 {% load socialaccount %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
-{% bootstrap_javascript %}
 
+{% bootstrap_javascript %}
+{% if user.is_authenticated %}
+    
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
-  <a class="navbar-brand text-white" href="#">Put name here</a>
+  <a class="navbar-brand text-white" href="#">Put Name Here</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="navbar-nav">
+     <li class="navbar-nav">
+     <li>
+        <a class="nav-item nav-link active text-sm text-white" href="/login">Main</a>
+     </li>
       <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
     </li>
      <li>
@@ -21,24 +26,23 @@
        <a class="nav-item nav-link active text-sm text-white" href="#">Reviews</a>
      </li>
      <li>
-        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
-     </li>
-     <li>
       <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
      </li>
-    </ul>
+   </ul>
     </div>
   </div>
 </nav>
-
 <html>
   <body>
   <figure class="text-center">
     <h1> UVA Off-Grounds Housing </h1>
-    {% if user.is_authenticated %}
     <p>Welcome, you are logged in as {{user.username }}.</p>
     {%else%}
-    <a class="btn btn-light" href="{% provider_login_url 'google' %}" role="button">Login With Google</a>
+    <html>
+  <body>
+  <figure class="text-center">
+    <h1> UVA Off-Grounds Housing </h1>
+    <a class="btn btn-primary" href="{% provider_login_url 'google' %}" role="button">Login With Google</a>
     {%endif%}
   </figure>
 
