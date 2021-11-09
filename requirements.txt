@@ -4,6 +4,7 @@ django-heroku
 django-bootstrap-v5
 django-allauth
 django-filter
+Pillow
 
 mock~=4.0.3
 google~=3.0.0

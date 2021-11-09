@@ -6,3 +6,5 @@ class OrderFilter(django_filters.FilterSet):
         model = Listing
         fields = '__all__'
         exclude = ['name', 'longitude', 'latitude', 'pub_date']
+        exclude = ['name', 'longitude', 'latitude', 'pub_date', 'image', 'laundry', 'parking', 'fitness']
+

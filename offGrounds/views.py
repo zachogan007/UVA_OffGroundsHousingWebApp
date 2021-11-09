@@ -8,9 +8,20 @@ from django.utils import timezone
 from .filters import OrderFilter
 from .forms import ReviewForm
 
+from .models import Listing  # , Pin
+from django.utils import timezone
+from .filters import OrderFilter
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
+
+
+def show_user(request, name):
+    return HttpResponse("You are looking at this user: " % name)
+
+
+def show_review(request, review_text):
+    return HttpResponse("You are looking at this review: " % review_text)
 
 
 def default_map(request):
@@ -33,6 +44,12 @@ def search_view(request):
     # beds = Listing.objects.get(id=num_beds)
     # baths = Listing.objects.get(id=num_baths)
 
+    myFilter = OrderFilter(request.GET, queryset=listings)
+    listings = myFilter.qs
+
+   # beds = Listing.objects.get(id=num_beds)
+   # baths = Listing.objects.get(id=num_baths)
+    
     myFilter = OrderFilter(request.GET, queryset=listings)
     listings = myFilter.qs
 
@@ -69,22 +86,9 @@ def write_review(request):
             return redirect("/")
         rating = request.POST.get('rating', 3)
         review_text = request.POST.get('review_text', '')
-        review = Review.objects.create(listing=listing, user=request.user, rating=rating, review_text=review_text)
+        #review = Review.objects.create(listing=listing, user=request.user, rating=rating, review_text=review_text)
         return redirect('listing_details')
     return render(request, 'homesearch/listing.html', {"form": form})
-"""
- context = {
-        'listing': listing,
-        'review': review
-        is how ur gonna transport the form
-    }
-    
-    -make a forms class: forms.py --> make your own form, include the form in the definition in listing.html
-        - rewrite listingview as a normal view
-        - 
-    
-"""
-
 
 def user_view(request):
     return render(request, 'userprofile/profile_index.html')
