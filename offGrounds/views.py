@@ -6,6 +6,8 @@ from django.views import generic
 from .models import Listing  # , Pin
 from django.utils import timezone
 from .filters import OrderFilter
+from .calendar_API import test_calendar
+
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
@@ -56,3 +58,11 @@ class ListingView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         return Listing.objects.filter(pub_date__lte=timezone.now())
+
+
+
+
+def demo(request):
+        results = test_calendar()
+        context = {"results": results}
+        return render(request, 'calendar/demo.html', context)

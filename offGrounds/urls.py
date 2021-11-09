@@ -15,4 +15,5 @@ urlpatterns = [
     path('login/', TemplateView.as_view(template_name="login/index.html")),
     path('homesearch/', views.search_view, name="search"),
     path('homesearch/listing/<int:pk>', views.ListingView.as_view(), name="listing"),
+    path('demo/', views.demo, name='demo'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
