@@ -1,23 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.views import generic
-from .models import Listing  # , Pin
+from .models import Listing, Review  # , Pin
 from django.utils import timezone
 from .filters import OrderFilter
+from .forms import ReviewForm
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
-
-
-def show_user(request, name):
-    return HttpResponse("You are looking at this user: " % name)
-
-
-def show_review(request, review_text):
-    return HttpResponse("You are looking at this review: " % review_text)
 
 
 def default_map(request):
@@ -49,7 +42,8 @@ def search_view(request):
 
 
 # def listing_view(request):
-#     return render(request, 'homesearch/listing.html')
+# make context
+#     return render(request, 'homesearch/listing.html', context)
 
 
 class ListingView(generic.DetailView):
@@ -63,5 +57,35 @@ class ListingView(generic.DetailView):
         return Listing.objects.filter(pub_date__lte=timezone.now())
 
 
+def write_review(request):
+    listing = Listing.objects.filter(pub_date__lte=timezone.now())
+    #listing.save()
+    form = ReviewForm()
+
+    if request.method == 'POST' and request.user.is_authenticated:
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+        rating = request.POST.get('rating', 3)
+        review_text = request.POST.get('review_text', '')
+        review = Review.objects.create(listing=listing, user=request.user, rating=rating, review_text=review_text)
+        return redirect('listing_details')
+    return render(request, 'homesearch/listing.html', {"form": form})
+"""
+ context = {
+        'listing': listing,
+        'review': review
+        is how ur gonna transport the form
+    }
+    
+    -make a forms class: forms.py --> make your own form, include the form in the definition in listing.html
+        - rewrite listingview as a normal view
+        - 
+    
+"""
+
+
 def user_view(request):
     return render(request, 'userprofile/profile_index.html')
+

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Listing #, Pin
+from .models import Listing  # , Pin
 # Register your models here.
 
 from .models import *
@@ -15,5 +15,8 @@ class ListingAdmin(admin.ModelAdmin):
         (None, {'fields': ['name']}),
     ]
 
+
 # admin.site.register(Pin)
 admin.site.register(Listing)
+admin.site.register(Review)
+admin.site.register(User)

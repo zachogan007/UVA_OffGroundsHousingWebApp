@@ -4,14 +4,6 @@ from django.utils import timezone
 
 
 # Create your models here.
-class Review(models.Model):
-    review_text = models.TextField(max_length=20000)
-    pub_date = models.DateField('date published')
-
-    def __str__(self):
-        return self.review_text
-
-
 class User(models.Model):
     name = models.TextField(max_length=2000)
     password = models.TextField(max_length=2000, default="")
@@ -48,5 +40,18 @@ class Listing(models.Model):
     latitude = models.FloatField(default=0.0)
     pub_date = models.DateTimeField(default=timezone.now())
 
+   # slug = models.SlugField()
+
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    review_text = models.TextField(max_length=20000)
+    pub_date = models.DateField(default=timezone.now())
+    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    listing = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE)
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return self.review_text
