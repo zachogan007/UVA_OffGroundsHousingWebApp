@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-+930=p7!inly6elnsyk3qh2b(xtyqcy=0mgze-nm!k0^v2#2a=
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com', '127.0.0.1:8000', 'localhost']
+ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -175,7 +175,7 @@ SOCIALACCOUNT_PROVIDERS = {
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'media'
 
-SITE_ID = 3
+SITE_ID = 1
 LOGIN_REDIRECT_URL ='/'
 if 'HEROKU' in os.environ:
     import django_heroku
