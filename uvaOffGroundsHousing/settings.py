@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-+930=p7!inly6elnsyk3qh2b(xtyqcy=0mgze-nm!k0^v2#2a=
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['uvaoffgroundhousing.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['uvaoffgroundshousing.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
