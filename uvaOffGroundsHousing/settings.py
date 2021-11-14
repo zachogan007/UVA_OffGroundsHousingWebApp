@@ -175,7 +175,7 @@ SOCIALACCOUNT_PROVIDERS = {
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'media'
 
-SITE_ID = 3
+SITE_ID = 1
 LOGIN_REDIRECT_URL ='/'
 if 'HEROKU' in os.environ:
     import django_heroku
