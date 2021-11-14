@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,10 +137,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static').replace('\\','/')
+
 STATIC_URL = '/static/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATICFILES_DIRS = (
+ #   os.path.join(BASE_DIR, "static"),
+#)
+
+
 
 #**NOTE***************** these three keys we don't really need but they're just here, if they cause problem we can comment out
 GOOGLE_MAPS_API_KEY = "AIzaSyDJ9zM-zm9k45kiQCObVXQV2Ww1yCL-CzU"
