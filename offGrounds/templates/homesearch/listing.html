@@ -4,7 +4,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navigation</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -22,7 +23,7 @@
 <body>
 {% if user.is_authenticated %}
 <div class="listing">
-    <h1> {{listing.name}}  </h1>
+    <h1> {{listing.name}} </h1>
     <head>
         <style>
     {
@@ -50,7 +51,9 @@
     clear: both;
     }
 
-    </style>
+
+
+        </style>
     </head>
     <body>
     <div class="row">
@@ -59,16 +62,24 @@
             <img src="{{ listing.image.url }}" width="500px"/>
         </div>
         <div class="column middle">
-            <b> Rent: </b> <p> {{listing.rent}} / Month </p>
-            <b> Beds: </b> <p> {{listing.num_beds}} </p>
-            <b> Baths: </b> <p> {{listing.num_baths}} </p>
-            <b> Size: </b> <p> {{listing.size}} Sq. Ft.</p>
+            <b> Rent: </b>
+            <p> {{listing.rent}} / Month </p>
+            <b> Beds: </b>
+            <p> {{listing.num_beds}} </p>
+            <b> Baths: </b>
+            <p> {{listing.num_baths}} </p>
+            <b> Size: </b>
+            <p> {{listing.size}} Sq. Ft.</p>
         </div>
         <div class="column right">
-            <b> Laundry: </b> <p> {{listing.laundry}} </p>
-            <b> Parking: </b> <p> {{listing.parking}} </p>
-            <b> Fitness: </b> <p> {{listing.fitness}} </p>
-            <b> Date Published: </b> <p> {{listing.pub_date}} </p>
+            <b> Laundry: </b>
+            <p> {{listing.laundry}} </p>
+            <b> Parking: </b>
+            <p> {{listing.parking}} </p>
+            <b> Fitness: </b>
+            <p> {{listing.fitness}} </p>
+            <b> Date Published: </b>
+            <p> {{listing.pub_date}} </p>
         </div>
     </div>
     </body>
@@ -91,51 +102,51 @@
 <h3 class="subtitle"> Reviews </h3>
 <div class="reviews-wrapper">
     {% for review in listing.review.all %}
-        <div class="notification space-below">
-            <p>
-                <strong>Written By: </strong> {{ review.user.name }}
-                <strong>Date: </strong> {{ review.pub_date }}
-                <strong>Rating </strong> {{ review.rating }}
-            </p>
+    <div class="notification space-below">
+        <p>
+            <strong>Written By: </strong> {{ review.user.name }}
+            <strong>Date: </strong> {{ review.pub_date }}
+            <strong>Rating </strong> {{ review.rating }}
+        </p>
 
-            {{review.review_text}}
-        </div>
+        {{review.review_text}}
+    </div>
     {% empty %}
-        <div class="notification space-below">
-            No reviews yet
-        </div>
+    <div class="notification space-below">
+        No reviews yet
+    </div>
     {% endfor %}
 </div>
 
 <div class="notification space-below">
     {% if user.is_authenticated %}
-        <form method="post" action=".">
-            {% csrf_token %}
+    <form action="{% url 'write_review' listing_id=listing.id %}" method="POST">
+        {% csrf_token %}
 
-            <div class="field">
-                <label>Rating</label>
-                <div class="control">
-                    <div class="select">
-                        <select name="rating">
-                            <option value="1" selected >1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
+        <div class="field">
+            <label>Rating</label>
+            <div class="control">
+                <div class="select">
+                    <select name="rating">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
             </div>
+        </div>
 
-            <div class="field">
-                <label>Write a Review Here</label>
-                {{ form }} <br> </br>
-                <textarea class="textarea" name="review_content"></textarea>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+        <div class="field">
+            <label>Write a Review Here</label>
+            {{ form }} <br> </br>
+            <textarea class="textarea" name="review_content"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
     {% else %}
-        <p>Please sign in to add reviews!</p>
+    <p>Please sign in to add reviews!</p>
     {% endif %}
 </div>
 

@@ -44,7 +44,7 @@ class Listing(models.Model):
     parking = models.CharField(max_length=200, default="", blank=True)
     fitness = models.CharField(max_length=200, default="", blank=True)
 
-   # slug = models.SlugField()
+    # slug = models.SlugField()
 
     def __str__(self):
         return self.name
@@ -53,7 +53,7 @@ class Listing(models.Model):
 class Review(models.Model):
     review_text = models.TextField(max_length=20000)
     pub_date = models.DateField(default=timezone.now())
-    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    #user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
     listing = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE)
     rating = models.IntegerField()
 
@@ -62,4 +62,3 @@ class Review(models.Model):
 
     def __str__(self):
         return self.name
-
