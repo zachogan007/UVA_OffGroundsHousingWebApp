@@ -4,7 +4,10 @@
 
 {% bootstrap_javascript %}
 {% if user.is_authenticated %}
-    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
   <a class="navbar-brand text-white" href="#">Put name here</a>
@@ -15,8 +18,9 @@
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
      <li class="navbar-nav">
      <li>
-        <a class="nav-item nav-link active text-sm text-white" href="/login">Main</a>
+        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
      </li>
+      <li>
       <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
     </li>
      <li>
@@ -25,6 +29,9 @@
      <li>
        <a class="nav-item nav-link active text-sm text-white" href="#">Reviews</a>
      </li>
+     <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
+    </li>
      <li>
       <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
      </li>
@@ -38,8 +45,8 @@
     <h1> UVA Off-Grounds Housing </h1>
     <p>Welcome, you are logged in as {{user.username }}.</p>
     {%else%}
-    <html>
-  <body>
+  </figure>
+
   <figure class="text-center">
     <h1> UVA Off-Grounds Housing </h1>
     <a class="btn btn-primary" href="{% provider_login_url 'google' %}" role="button">Login With Google</a>
@@ -48,14 +55,14 @@
 
   </body>
 
-  <footer class="fixed-bottom bg-light text-black">
+  <div class="footer fixed-bottom bg-light text-black mt-3 pt-2 pb-2">
       <div class="container">
           <div class="row align-items-start">
             <div class="col">
-             Instagram icon
+                <i class="bi bi-instagram"></i>
             </div>
             <div class="col">
-             Search Homes Link
+                <a style="text-decoration: none" href="/homesearch">Homes</a>
             </div>
             <div class="col">
 
@@ -63,26 +70,26 @@
           </div>
           <div class="row align-items-center">
             <div class="col">
-              Twitter Icon
+             <i class="bi bi-twitter"></i>
             </div>
             <div class="col">
-             Reviews Link
+                <a style="text-decoration: none" href="#">Reviews</a>
             </div>
             <div class="col">
-             Put Icon for something
+
             </div>
           </div>
           <div class="row align-items-end">
             <div class="col">
-              LinkedIn Icon
+              <i class="bi bi-linkedin"></i>
             </div>
             <div class="col">
-              Maps Link
+                <a style="text-decoration: none" href="/maps">Map</a>
             </div>
             <div class="col">
 
             </div>
           </div>
       </div>
-  </footer>
+  </div>
 </html>
