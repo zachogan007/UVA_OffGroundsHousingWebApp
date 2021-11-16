@@ -34,10 +34,10 @@
 </nav>
 
 <html>
-<body>
 
+<html>
+<body>
 {% if user.is_authenticated %}
-<div class = "container-fluid">
 <div class="listing">
     <h1> {{listing.name}}  </h1>
     <head>
@@ -70,7 +70,7 @@
     </style>
     </head>
     <body>
-    <div class="container-fluid row">
+    <div class="row">
         <div class="column left">
             <p> {{listing.address}} </p>
             <img src="{{ listing.image.url }}" width="500px"/>
@@ -94,10 +94,10 @@
     <p1> You are not logged in. Please go to the "Home" tab to log in.</p1>
     {%endif%}
 </div>
-</div>
+
 
 </body>
-  <div class="footer fixed-bottom bg-light text-black pt-2 mt-3 pb-2">
+<div class="footer fixed-bottom bg-light text-black pt-2 mt-3 pb-2">
       <div class="container">
           <div class="row align-items-start">
             <div class="col">
