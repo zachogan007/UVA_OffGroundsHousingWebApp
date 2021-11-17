@@ -17,4 +17,5 @@ urlpatterns = [
     path('homesearch/listing/<int:pk>', views.ListingView.as_view(), name="ListingView"),
     path('homesearch/listing/<int:listing_id>/review', views.write_review, name="write_review"),
     path('userprofile/', views.user_view, name="userprofile"),
+    path('reviews/', views.ReviewListView.as_view(), name="ReviewListView"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

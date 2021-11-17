@@ -51,14 +51,11 @@ class Listing(models.Model):
 
 
 class Review(models.Model):
-    review_text = models.TextField(max_length=20000)
+    review_text = models.TextField(max_length=20000, default="")
     pub_date = models.DateField(default=timezone.now())
-    #user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
     listing = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE)
-    rating = models.IntegerField()
+    rating = models.IntegerField(default=1)
 
     def __str__(self):
         return self.review_text
-
-    def __str__(self):
-        return self.name

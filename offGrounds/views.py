@@ -70,7 +70,7 @@ class ListingView(generic.DetailView):
 def write_review(request, listing_id):
     # listing = Listing.objects.filter(pub_date__lte=timezone.now())
     # listing.save()
-    review = Review.objects.create()
+    review = Review.objects.create(review_text="", rating=1, listing=None)
     url = "homesearch/listing/" + listing_id +"/review"
     try:
         listing = Listing.objects.get(pk=listing_id)
@@ -91,7 +91,7 @@ def write_review(request, listing_id):
 
 class ReviewListView(generic.ListView):
     model = Review
-    # template_name = 'homesearch/review.html'
+    template_name = 'review/review_list.html'
     context_object_name = 'reviewlist'
 
     def get_queryset(self):
