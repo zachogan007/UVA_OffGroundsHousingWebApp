@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 # Create your models here.
-class User(models.Model):
+class Profile(models.Model):
     name = models.TextField(max_length=2000)
     password = models.TextField(max_length=2000, default="")
     is_logged_in = False
@@ -53,7 +53,7 @@ class Listing(models.Model):
 class Review(models.Model):
     review_text = models.TextField(max_length=20000, default="")
     pub_date = models.DateField(default=timezone.now())
-    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    # profile = models.ForeignKey(Profile, related_name='reviews', on_delete=models.CASCADE)
     listing = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE)
     rating = models.IntegerField(default=1)
 
