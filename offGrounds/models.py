@@ -2,7 +2,6 @@ from django.db import models
 import datetime
 from django.utils import timezone
 
-
 # Create your models here.
 class Review(models.Model):
     review_text = models.TextField(max_length=20000)
@@ -16,6 +15,10 @@ class User(models.Model):
     name = models.TextField(max_length=2000)
     password = models.TextField(max_length=2000, default="")
     is_logged_in = False
+    year = models.TextField(default="")
+    phone_number = models.CharField(max_length=12, default="000-000-0000")
+    instagram = models.CharField(max_length=200, default="")
+
 
     def __str__(self):
         return self.name

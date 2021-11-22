@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.views import generic
-from .models import Listing  # , Pin
+from .models import Listing, User
 from django.utils import timezone
 from .filters import OrderFilter
 
@@ -56,3 +56,13 @@ class ListingView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         return Listing.objects.filter(pub_date__lte=timezone.now())
+
+
+def account_view(request):
+    if request.method == "POST":
+        new_user = User()
+        new_user.username = request.POST.get("user_username", None)
+        new_user.first_name = request.POST.get("user_first_name", None)
+        new_user.last_name = request.POST.get("user_last_name", None)
+        User.save(new_user)
+    return render(request, 'account/manage_account.html')
