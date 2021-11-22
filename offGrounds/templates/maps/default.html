@@ -8,16 +8,16 @@
     
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
-  <a class="navbar-brand text-white" href="#"><i class="bi bi-house"></i> </a>
+  <a class="navbar-brand text-white" href="/homesearch"><i class="bi bi-house"></i> </a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
      <li class="navbar-nav">
-     <li>
-        <a class="nav-item nav-link active text-sm text-white" href="/login">Main</a>
+        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
      </li>
+       <li>
       <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
     </li>
      <li>
@@ -37,10 +37,6 @@
   </div>
 </nav>
 <html>
-
-
-
-<html>
 {% if user.is_authenticated %}
 <head>
     <title>Interactive maps for Django web apps</title>
@@ -48,9 +44,14 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-<h1>Map Search</h1>
+<div class="text-center mt-3 pt-2 mb-3 pb-2 bg-light p-2" >
+    <h3>Search Homes</h3>
+    <small class="text-muted">Type in a location to find your next home!</small>
+</div>
+
+
 <div class="contianer-fluid">
-<div id='map' style='width: 800px; height: 450px;'></div>
+<div id='map' style='display: block; margin-left: auto; margin-right: auto; width: 850px; height: 450px;'></div>
     </div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWIxNiIsImEiOiJja3Y4c21jMWo5eHhwMm9vOGZuZXlnZW05In0.a-KfD2aiSDVojLVb1CauUA';
@@ -58,14 +59,15 @@ var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/streets-v10',
 center: [-78.51, 38.03],
-zoom: 9
+zoom: 12
 });
+
 
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
   mapboxgl: mapboxgl,
   marker: true,
-  placeholder: 'Search for places in Charlottesville',
+  placeholder: 'Search...',
   bbox: [-78.582, 37.971, -78.438, 38.089],
 });
 

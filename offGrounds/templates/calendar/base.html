@@ -8,16 +8,16 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
-  <a class="navbar-brand text-white" href="#">Put name here</a>
+  <a class="navbar-brand text-white" href="/homesearch"><i class="bi bi-house"></i></a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
      <li class="navbar-nav">
-     <li>
         <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
      </li>
+       <li>
       <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
     </li>
      <li>
@@ -37,55 +37,51 @@
   </div>
 </nav>
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'calendar\css\styles.css' %}">
-  <title>Django Calendar App</title>
-</head>
-<body>
+ <html>
+    <body>
+    <link rel="stylesheet" type="text/css" href="{% static 'calendar\css\styles.css' %}">
 
-  {% block content %}
-  {% endblock %}
-</body>
-  <div class="footer fixed-bottom bg-light text-black mt-3 pt-2 pb-2">
-      <div class="container">
-          <div class="row align-items-start">
-            <div class="col">
-                <i class="bi bi-instagram"></i>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/homesearch">Homes</a>
-            </div>
-            <div class="col">
+          {% block content %}
+          {% endblock %}
+    </body>
 
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col">
-             <i class="bi bi-twitter"></i>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="#">Reviews</a>
-            </div>
-            <div class="col">
 
-            </div>
-          </div>
-          <div class="row align-items-end">
-            <div class="col">
-              <i class="bi bi-linkedin"></i>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/maps">Map</a>
-            </div>
-            <div class="col">
+ </html>
 
-            </div>
+<div class="footer fixed-bottom bg-light text-black mt-3 pt-2 pb-2">
+        <div class="container">
+              <div class="row align-items-start">
+                <div class="col">
+                    <i class="bi bi-instagram"></i>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/homesearch">Homes</a>
+                </div>
+                <div class="col">
+
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col">
+                 <i class="bi bi-twitter"></i>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="#">Reviews</a>
+                </div>
+                <div class="col">
+
+                </div>
+              </div>
+              <div class="row align-items-end">
+                <div class="col">
+                  <i class="bi bi-linkedin"></i>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/maps">Map</a>
+                </div>
+                <div class="col">
+
+                </div>
+              </div>
           </div>
       </div>
-  </div>

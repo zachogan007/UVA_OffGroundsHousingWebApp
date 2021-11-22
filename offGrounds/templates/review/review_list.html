@@ -3,52 +3,38 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
-    <div class="container-fluid">
-        <a class="navbar-brand text-white" href="#">Put name here</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="navbar-nav">
-                    <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
-                </li>
-                <li>
-                    <a class="nav-item nav-link active text-sm text-white" href="/maps">Maps</a>
-                </li>
-                <li>
-                    <a class="nav-item nav-link active text-sm text-white" href="userprofile">User Profile</a>
-                </li>
-                <li>
-                    <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
-                </li>
-                <li>
-                    <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
-                </li>
-            </ul>
-        </div>
+  <div class="container-fluid">
+  <a class="navbar-brand text-white" href="#"><i class="bi bi-house"></i></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="navbar-nav">
+        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
+     </li>
+       <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
+    </li>
+     <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/maps">Maps</a>
+     </li>
+     <li>
+       <a class="nav-item nav-link active text-sm text-white" href="#">Reviews</a>
+     </li>
+    <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
+    </li>
+     <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
+     </li>
+    </ul>
     </div>
+  </div>
 </nav>
 
-
-<h3 class="subtitle"> All Reviews </h3>
-<div class="reviews-wrapper">
-    {% for review in listing.review.all %}
-    <div class="notification space-below">
-        <p>
-            <strong>Written By: </strong> {{ review.user.name }}
-            <strong>Date: </strong> {{ review.pub_date }}
-            <strong>Rating </strong> {{ review.rating }}
-        </p>
-
-        {{review.review_text}}
-    </div>
-    {% empty %}
-    <div class="notification space-below">
-        No reviews yet
-    </div>
-    {% endfor %}
-</div>
 

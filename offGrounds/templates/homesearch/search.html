@@ -8,30 +8,32 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
-  <a class="navbar-brand text-white" href="#"><i class="bi bi-house"></i></a>
+  <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="navbar-nav">
-      <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
+     <li class="navbar-nav">
+      <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Listings</a>
     </li>
      <li>
-      <a class="nav-item nav-link active text-sm text-white" href="/maps">Maps</a>
+      <a class="nav-item nav-link active text-sm text-white" href="/maps">Map</a>
      </li>
      <li>
-       <a class="nav-item nav-link active text-sm text-white" href="#">Reviews</a>
+       <a class="nav-item nav-link active text-sm text-white" href="/reviews">Reviews</a>
      </li>
      <li>
-        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
-     </li>
       <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
+    </li>
+    <li>
+        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
     </li>
      <li>
       <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
      </li>
-    </ul>
+   </ul>
     </div>
   </div>
 </nav>
@@ -39,44 +41,46 @@
 <html>
 <body>
 {% if user.is_authenticated %}
-<h1> Search for Housing  </h1>
+<h1> Properties </h1>
 
 <br>
 <div class="row">
   <div class="col">
-    <div class="card card-body">
+    <div class="card card-body bg-light" >
       <form method="get">
-	{{myFilter.form}}
+        <div class="d-flex flex-wrap px-3" style="position: relative;">
+	        {{myFilter.form}}
+        </div>
 	<button class="btn btn-primary" type="submit">
 	  Search</button>
       </form>
     </div>
   </div>
 </div>
-<br>
+</br>
 
 
 <div class="row">
   <div class="col-md">
     <div class="card card-body">
       <table class="table table-sm">
-	<tr>
+	<tr class="bg-info">
 	  <th>Name</th>
 	  <th>Address</th>
 	  <th>Beds</th>
 	  <th>Baths</th>
-	  <th>Rent</th>
-	  <th>Size</th>
+	  <th>Rent ($)</th>
+	  <th>Size (sqr. ft.)</th>
 
 	</tr>
 	{% for loc in all_listings %}
-	<tr>
-	  <th><a class="nav-link" href="/homesearch/listing/{{loc.id}}">{{loc.name}}</a></th>
-	  <th>{{loc.address}}</th>
-	  <th>{{loc.num_beds}}</th>
-	  <th>{{loc.num_baths}}</th>
-	  <th>{{loc.rent}}</th>
-	  <th>{{loc.size}}</th>
+	<tr class="bg-light">
+	  <td><a class="nav-link" href="/homesearch/listing/{{loc.id}}">{{loc.name}}</a></td>
+	  <td>{{loc.address}}</td>
+	  <td>{{loc.num_beds}}</td>
+	  <td>{{loc.num_baths}}</td>
+	  <td>{{loc.rent}}</td>
+	  <td>{{loc.size}}</td>
 	</tr>
 
 	{% endfor %}
