@@ -1,5 +1,5 @@
 from django.db import models
-import datetime
+from datetime import date
 from django.utils import timezone
 
 
@@ -38,7 +38,7 @@ class Listing(models.Model):
     size = models.FloatField(default=0.0)
     longitude = models.FloatField(default=0.0)
     latitude = models.FloatField(default=0.0)
-    pub_date = models.DateTimeField(default=timezone.now())
+    pub_date = models.DateTimeField(default=date.today)
     image = models.ImageField(upload_to='images')
     laundry = models.CharField(max_length=200, default="", blank=True)
     parking = models.CharField(max_length=200, default="", blank=True)
