@@ -17,7 +17,12 @@ import calendar
 
 
 
-
+def ReviewView(request):
+    reviews = Review.objects.all()
+    context = {
+        'reviews' : reviews
+    }
+    return render(request, 'review/review_list.html', context)
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")

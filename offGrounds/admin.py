@@ -28,4 +28,6 @@ admin.site.register(Listing)
 
 admin.site.register(Event)
 
+admin.site.register(Review)
+
 

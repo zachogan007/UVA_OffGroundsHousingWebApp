@@ -35,15 +35,15 @@
 
 <h3 class="subtitle"> All Reviews </h3>
 <div class="reviews-wrapper">
-    {% for review in listing.review.all %}
+    {%for loc in reviews %}
     <div class="notification space-below">
         <p>
-            <strong>Written By: </strong> {{ review.user.name }}
-            <strong>Date: </strong> {{ review.pub_date }}
-            <strong>Rating </strong> {{ review.rating }}
+            <strong>Date: </strong> {{ loc.pub_date }}
+            <strong>Title:</strong> {{ loc.place }}
+            <strong>Rating:</strong> {{ loc.rating}}
         </p>
 
-        {{review.review_text}}
+        {{loc.review_text}}
     </div>
     {% empty %}
     <div class="notification space-below">
