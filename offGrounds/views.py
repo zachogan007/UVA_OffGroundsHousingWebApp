@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout
 from django.urls import reverse
 from django.views import generic
-from .models import Listing  # , Pin
+from .models import Listing
 from django.utils import timezone
 from .filters import OrderFilter
 
