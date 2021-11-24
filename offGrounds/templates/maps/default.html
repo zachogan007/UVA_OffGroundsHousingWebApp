@@ -5,30 +5,40 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
-    
+
+<html>
+{% if user.is_authenticated %}
+
+<head>
+    <title>Interactive maps for Django web apps</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
-  <a class="navbar-brand text-white" href="/homesearch"><i class="bi bi-house"></i> </a>
+  <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
      <li class="navbar-nav">
-        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
-     </li>
-       <li>
-      <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
+      <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Listings</a>
     </li>
      <li>
-      <a class="nav-item nav-link active text-sm text-white" href="/maps">Maps</a>
+      <a class="nav-item nav-link active text-sm text-white" href="/maps">Map</a>
      </li>
      <li>
-       <a class="nav-item nav-link active text-sm text-white" href="#">Reviews</a>
+       <a class="nav-item nav-link active text-sm text-white" href="/reviews">Reviews</a>
      </li>
      <li>
       <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
-     </li>
+    </li>
+    <li>
+        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
+    </li>
      <li>
       <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
      </li>
@@ -36,14 +46,6 @@
     </div>
   </div>
 </nav>
-<html>
-{% if user.is_authenticated %}
-<head>
-    <title>Interactive maps for Django web apps</title>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-</head>
-<body>
 <div class="text-center mt-3 pt-2 mb-3 pb-2 bg-light p-2" >
     <h3>Search Homes</h3>
     <small class="text-muted">Type in a location to find your next home!</small>
