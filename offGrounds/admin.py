@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Listing #, Pin
+
 # Register your models here.
-from .models import Event
 
 from .models import *
 
@@ -16,17 +15,14 @@ class ListingAdmin(admin.ModelAdmin):
         (None, {'fields': ['name']}),
     ]
 
+
 # admin.site.register(Pin)
 admin.site.register(Listing)
-
-
-
-#class CalendarAdmin(admin.ModelAdmin):
-    #fieldsets = [
-     #   (None, {'fields': ['name']}),
-    #]
+#admin.site.register(Review)
+admin.site.register(User)
 
 admin.site.register(Event)
+# admin.site.register(Pin)
 
 admin.site.register(Review)
 

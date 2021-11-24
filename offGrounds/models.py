@@ -5,9 +5,6 @@ from django.utils import timezone
 
 
 # Create your models here.
-
-
-
 class User(models.Model):
     name = models.TextField(max_length=2000)
     password = models.TextField(max_length=2000, default="")
@@ -25,6 +22,14 @@ class User(models.Model):
         self.is_logged_in = False
 
 
+# class Pin(models.Model):
+#     name = models.CharField(max_length=200)
+#     longitude = models.FloatField(default=0.0)
+#     latitude = models.FloatField(default=0.0)
+#
+#     def __str__(self):
+#         return self.name
+
 class Listing(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
@@ -40,8 +45,11 @@ class Listing(models.Model):
     parking = models.CharField(max_length=200, default="", blank=True)
     fitness = models.CharField(max_length=200, default="", blank=True)
 
+    # slug = models.SlugField()
+
     def __str__(self):
         return self.name
+
 
 
 class Event(models.Model):
@@ -54,10 +62,11 @@ class Event(models.Model):
         return self.name
 
 class Review(models.Model):
-    review_text = models.TextField(max_length=20000)
-    pub_date = models.DateField('date published')
+    place = models.TextField(max_length=200)
+    review_text = models.TextField(max_length=2000)
+    pub_date = models.DateTimeField(default=0.0)
     rating = models.IntegerField(default=0, validators = [MaxValueValidator(5), MinValueValidator(0)])
-    place = models.TextField(default="",max_length=20000)
+
 
     def __str__(self):
         return self.review_text
