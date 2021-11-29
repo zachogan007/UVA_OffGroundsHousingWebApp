@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from .filters import ReviewFilter
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout
 from django.urls import reverse
@@ -16,7 +16,15 @@ from .calendar import Calendar
 import calendar
 
 
-
+#Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
+def review_search(request):
+    reviews = Review.objects.all()
+    rFilter = ReviewFilter(request.GET, queryset=reviews)
+    reviews = rFilter.qs
+    context = {
+        'reviews': reviews, 'rFilter': rFilter
+    }
+    return render(request, 'review/review_list.html', context)
 
 
 def index(request):
@@ -29,6 +37,7 @@ def show_user(request, name):
 
 def show_review(request, review_text):
     return HttpResponse("You are looking at this review: " % review_text)
+
 
 def default_map(request):
     # TODO: move this token to Django settings from an environment variable
@@ -44,19 +53,20 @@ def logout_view(request):
     logout(request)
     return render(request, 'logout/logout_index.html')
 
-
+#Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
 def search_view(request):
     listings = Listing.objects.all()
 
-   # beds = Listing.objects.get(id=num_beds)
-   # baths = Listing.objects.get(id=num_baths)
-    
+    # beds = Listing.objects.get(id=num_beds)
+    # baths = Listing.objects.get(id=num_baths)
+
     myFilter = OrderFilter(request.GET, queryset=listings)
     listings = myFilter.qs
-    
+
     context = {'listings': listings, 'myFilter': myFilter}
     return render(request, 'homesearch/search.html',
                   {'all_listings': listings, 'myFilter': myFilter})
+
 
 
 class ListingView(generic.DetailView):
@@ -68,7 +78,6 @@ class ListingView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         return Listing.objects.filter(pub_date__lte=timezone.now())
-
 
 
 class CalendarView(generic.ListView):
@@ -85,11 +94,13 @@ class CalendarView(generic.ListView):
         context['next_month'] = next_month(d)
         return context
 
+
 def get_date(req_day):
     if req_day:
         year, month = (int(x) for x in req_day.split('-'))
         return datetime.date(year, month, day=1)
     return datetime.date.today()
+
 
 def prev_month(d):
     first = d.replace(day=1)
@@ -97,9 +108,40 @@ def prev_month(d):
     month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
     return month
 
+
 def next_month(d):
     days_in_month = calendar.monthrange(d.year, d.month)[1]
     last = d.replace(day=days_in_month)
     next_month = last + timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
+#class ReviewView(generic.DetailView):
+ #  model = Review
+  #template_name = 'review/review_list.html'
+
+   # def get_queryset(self):
+
+    #    return Review.objects.filter(pub_date__lte=timezone.now)
+
+    #latest_review_list = Review.objects.all()
+    #context={
+     #   'latest_review_list': latest_review_list,
+    #}
+    #return render(request, 'review/review_list.html', context)
+    #model = Review
+    #template_name = 'review/review_list.html'
+
+
+    #def get_queryset(self):
+     #   return Review.objects.filter(pub_date_lte=timezone.now())
+
+    #def write_review(request):
+        #review = Review.objects.create(review_text="", rating=1)
+        #if request.method == "POST":
+            #rating = request.POST.get('rating', 3)
+            #review_text = request.POST.get('review_content', '')
+           # form = ReviewForm(request.POST)
+          #  form.save()
+         #   review = Review.objects.create(review_text=review_text, rating=rating)
+        #    return redirect('reviews/')
+       # return render(request, 'review/review_list.html', {'review': review})

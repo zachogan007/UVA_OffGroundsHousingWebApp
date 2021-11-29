@@ -2,12 +2,17 @@
 {% load socialaccount %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
+<<<<<<< HEAD
+=======
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+>>>>>>> 42f6308b4cd7a7e4db7fd47c6174efca8a461f5f
 {% bootstrap_javascript %}
+
+
 {% if user.is_authenticated %}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
   <a class="navbar-brand text-white" href="#"><i class="bi bi-house"></i></a>
@@ -50,50 +55,153 @@
     <p>Welcome, you are logged in as {{user.username }}.</p>
     {%else%}
   </figure>
+=======
+<html>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+      <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="navbar-nav">
+          <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Listings</a>
+        </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/maps">Map</a>
+         </li>
+         <li>
+           <a class="nav-item nav-link active text-sm text-white" href="/reviews">Reviews</a>
+         </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
+        </li>
+        <li>
+            <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
+        </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
+         </li>
+       </ul>
+        </div>
+      </div>
+    </nav>
+  <header class="d-flex justify-content-center flex-column text-center bg-light" style="max-height: 600px;   min-height: 400px;">
+  <div class="container pt-5 ">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+>>>>>>> 42f6308b4cd7a7e4db7fd47c6174efca8a461f5f
+
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Mission
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            Members
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="card" style="width: 16rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 16rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 16rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%else%}
+
 
   <figure class="text-center">
     <h1> UVA Off-Grounds Housing </h1>
-    <a class="btn btn-primary" href="{% provider_login_url 'google' %}" role="button">Login With Google</a>
+    <a class="btn btn-primary" href="{% provider_login_url 'google' %}" role="button">Login With Google</a></figure>
     {%endif%}
-  </figure>
 
-  </body>
+        <div class="footer bg-light text-black mt-3 pt-2 pb-2">
+          <div class="container">
+              <div class="row align-items-start">
+                <div class="col">
+                    <i class="bi bi-instagram"></i>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/homesearch">Listings</a>
+                </div>
+                <div class="col">
 
-  <div class="footer fixed-bottom bg-light text-black mt-3 pt-2 pb-2">
-      <div class="container">
-          <div class="row align-items-start">
-            <div class="col">
-                <i class="bi bi-instagram"></i>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/homesearch">Homes</a>
-            </div>
-            <div class="col">
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col">
+                 <i class="bi bi-twitter"></i>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/reviews">Reviews</a>
+                </div>
+                <div class="col">
 
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col">
-             <i class="bi bi-twitter"></i>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="#">Reviews</a>
-            </div>
-            <div class="col">
-
-            </div>
-          </div>
-          <div class="row align-items-end">
-            <div class="col">
-              <i class="bi bi-linkedin"></i>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/maps">Map</a>
-            </div>
-            <div class="col">
-
-            </div>
+                </div>
+              </div>
+              <div class="row align-items-end">
+                <div class="col">
+                  <i class="bi bi-linkedin"></i>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/maps">Map</a>
+                </div>
+                <div class="col">
+                </div>
+              </div>
           </div>
       </div>
+<<<<<<< HEAD
   </div>
 </html>
+=======
+  </body>
+</html>
+>>>>>>> 42f6308b4cd7a7e4db7fd47c6174efca8a461f5f

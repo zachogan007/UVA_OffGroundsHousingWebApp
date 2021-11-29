@@ -1,17 +1,10 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 import datetime
 from django.utils import timezone
 
 
 # Create your models here.
-class Review(models.Model):
-    review_text = models.TextField(max_length=20000)
-    pub_date = models.DateField('date published')
-
-    def __str__(self):
-        return self.review_text
-
-
 class User(models.Model):
     name = models.TextField(max_length=2000)
     password = models.TextField(max_length=2000, default="")
@@ -29,6 +22,14 @@ class User(models.Model):
         self.is_logged_in = False
 
 
+# class Pin(models.Model):
+#     name = models.CharField(max_length=200)
+#     longitude = models.FloatField(default=0.0)
+#     latitude = models.FloatField(default=0.0)
+#
+#     def __str__(self):
+#         return self.name
+
 class Listing(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
@@ -38,14 +39,17 @@ class Listing(models.Model):
     size = models.FloatField(default=0.0)
     longitude = models.FloatField(default=0.0)
     latitude = models.FloatField(default=0.0)
-    pub_date = models.DateTimeField(default=timezone.now())
+    pub_date = models.DateTimeField(default=0.0)
     image = models.ImageField(upload_to='images')
     laundry = models.CharField(max_length=200, default="", blank=True)
     parking = models.CharField(max_length=200, default="", blank=True)
     fitness = models.CharField(max_length=200, default="", blank=True)
 
+    # slug = models.SlugField()
+
     def __str__(self):
         return self.name
+
 
 
 class Event(models.Model):
@@ -56,3 +60,13 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+class Review(models.Model):
+    place = models.TextField(max_length=200)
+    review_text = models.TextField(max_length=2000)
+    pub_date = models.DateTimeField(default=0.0)
+    rating = models.IntegerField(default=0, validators = [MaxValueValidator(5), MinValueValidator(0)])
+
+
+    def __str__(self):
+        return self.review_text
