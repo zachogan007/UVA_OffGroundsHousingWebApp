@@ -6,14 +6,16 @@ import google.auth.credentials
 import google_auth_httplib2
 import httplib2
 from googleapiclient import _auth
+
 """
 
 """
 from django.test import TestCase
 # from django.test import Client
 
-from .models import User
+from .models import Profile
 from .models import Review
+from .filters import OrderFilter
 
 from django.http import HttpRequest
 from django.http import HttpResponse
@@ -28,18 +30,18 @@ from django.urls import resolve
 
 # Create your tests here.
 
-class UserTestCase(TestCase):
+class ProfileTestCase(TestCase):
 
     def setUp(self):
-        User.objects.create(name="bob")
+        Profile.objects.create(name="bob")
 
     def test_to_string(self):
         # test the to string method for User
         # expected return value: the user's name (for now, can change later)
-        bob = User.objects.get(name="bob")
+        bob = Profile.objects.get(name="bob")
         self.assertEqual(bob.__str__(), "bob")
 
-
+"""
 class ReviewTestCase(TestCase):
 
     def setUp(self):
@@ -50,7 +52,7 @@ class ReviewTestCase(TestCase):
         # expected return value: the user's name (for now, can change later)
         review1 = Review.objects.get(review_text="nice")
         self.assertEqual(review1.__str__(), "nice")
-
+"""
 
 # source: https://github.com/googleapis/google-api-python-client/blob/main/tests/test__auth.py
 class GoogleAuthTestCase(TestCase):
@@ -83,20 +85,21 @@ class GoogleAuthTestCase(TestCase):
     # User models the user account, needs to call set_password to actually sign in since default password is blank
     def test_login_sim(self):
         # c = Client()
-        user = User.objects.create(name="bob@gmail.com")
+        user = Profile.objects.create(name="bob@gmail.com")
         user.set_password("new_password")  # logged in should be true here
         user.save()
         login = user.is_logged_in
         self.assertTrue(login)
 
     def test_logout_sim(self):
-        user = User.objects.create(name="bob@gmail.com")
+        user = Profile.objects.create(name="bob@gmail.com")
         user.set_password("new_password")  # logged in should be true here
         user.save()
         user.logout()
         user.save()
         logged_out = user.is_logged_in
         self.assertFalse(logged_out)
+
         """
     def logout2_test_url(self):
         pass
@@ -108,4 +111,30 @@ class GoogleAuthTestCase(TestCase):
         self.assertTrue(html.startswith('html'))
         #self.assertTemplateUsed(response, 'logout_index.html')
      """
+
+
+class ListingTestCase(TestCase):
+    def setUp(self):
+        Listing.objects.create(name="1800 jpa", address="1800 Jefferson Park Ave. Charlottesville, VA 22903",
+                               num_bath=3.0, num_beds=3)
+
+ 
+class ListingFilterTestCase(TestCase):
+    def setUp(self):
+        Listing.objects.create(name="1800 jpa", address="1800 Jefferson Park Ave. Charlottesville, VA 22903",
+                               num_bath=3.0, num_beds=3)
+        Listing.objects.create(name="1815 JPA", address="1815 Jefferson Park Ave. Charlottesville, VA 22903",
+                               num_bath=2.0, num_beds=4)
+        Listing.objects.create(name="1910 jpa", address="1800 Jefferson Park Ave. Charlottesville, VA 22903",
+                               num_bath=3.0, num_beds=3)
+
+    def filter_test_1(self):
+        get = {Listing.objects.get(name="1800 jpa").pk}
+        listings = Listing.objects.all()
+        list_ordered = OrderFilter(get, queryset=listings)
+        self.assertTrue(len(list(list_ordered.qs)), 1)
+
+    def filter_test_2(self):
+        pass
+
 # testing ideas/approaches for urls: query against the website --> for example: do something like ..,url/list

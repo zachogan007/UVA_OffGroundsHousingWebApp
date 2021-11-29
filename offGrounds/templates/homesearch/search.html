@@ -2,80 +2,131 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navigation</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/login">Home</a>
-            <a class="nav-item nav-link active" href="/homesearch">Search Homes</a>
-            <a class="nav-item nav-link active" href="/maps">Maps</a>
-            <a class="nav-item nav-link active" href="/userprofile">User Profile</a>
-            <a class="nav-item nav-link active" href="/logout">Logout</a>
-        </div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="container-fluid">
+  <a class="navbar-brand text-white" href="#"><i class="bi bi-house"></i></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="navbar-nav">
+      <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
+    </li>
+     <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/maps">Maps</a>
+     </li>
+     <li>
+       <a class="nav-item nav-link active text-sm text-white" href="reviews">Reviews</a>
+     </li>
+     <li>
+        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
+     </li>
+      <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
+    </li>
+     <li>
+      <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
+     </li>
+    </ul>
     </div>
+  </div>
 </nav>
 
-<!DOCTYPE html>
 <html>
 <body>
-
 {% if user.is_authenticated %}
-<h1> Search for Housing </h1>
+<h1> Search for Housing  </h1>
 
 <br>
 <div class="row">
-    <div class="col">
-        <div class="card card-body">
-            <form method="get">
-                {{myFilter.form}}
-                <button class="btn btn-primary" type="submit">
-                    Search
-                </button>
-            </form>
-        </div>
+  <div class="col">
+    <div class="card card-body">
+      <form method="get">
+	{{myFilter.form}}
+	<button class="btn btn-primary" type="submit">
+	  Search</button>
+      </form>
     </div>
+  </div>
 </div>
 <br>
 
 
 <div class="row">
-    <div class="col-md">
-        <div class="card card-body">
-            <table class="table table-sm">
-                <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Beds</th>
-                    <th>Baths</th>
-                    <th>Rent</th>
-                    <th>Size</th>
+  <div class="col-md">
+    <div class="card card-body">
+      <table class="table table-sm">
+	<tr>
+	  <th>Name</th>
+	  <th>Address</th>
+	  <th>Beds</th>
+	  <th>Baths</th>
+	  <th>Rent</th>
+	  <th>Size</th>
 
-                </tr>
-                {% for loc in all_listings %}
-                <tr>
-                    <th><a class="nav-link" href="/homesearch/listing/{{loc.id}}">{{loc.name}}</a></th>
-                    <th>{{loc.address}}</th>
-                    <th>{{loc.num_beds}}</th>
-                    <th>{{loc.num_baths}}</th>
-                    <th>{{loc.rent}}</th>
-                    <th>{{loc.size}}</th>
-                </tr>
+	</tr>
+	{% for loc in all_listings %}
+	<tr>
+	  <th><a class="nav-link" href="/homesearch/listing/{{loc.id}}">{{loc.name}}</a></th>
+	  <th>{{loc.address}}</th>
+	  <th>{{loc.num_beds}}</th>
+	  <th>{{loc.num_baths}}</th>
+	  <th>{{loc.rent}}</th>
+	  <th>{{loc.size}}</th>
+	</tr>
 
-                {% endfor %}
+	{% endfor %}
 
-            </table>
-        </div>
+      </table>
     </div>
+  </div>
 </div>
 
 
 {%else%}
-<p1> You are not logged in. Please go to the "Home" tab to log in.</p1>
+<p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
 {%endif%}
 
 </body>
+<div class="footer bg-light text-black pt-2 mt-3 pb-2">
+      <div class="container">
+          <div class="row align-items-start">
+            <div class="col">
+                <i class="bi bi-instagram"></i>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/homesearch">Homes</a>
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col">
+             <i class="bi bi-twitter"></i>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="#">Reviews</a>
+            </div>
+              <div class="col">
+
+              </div>
+          </div>
+          <div class="row align-items-end">
+            <div class="col">
+              <i class="bi bi-linkedin"></i>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/maps">Map</a>
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
+      </div>
+  </div>
 </html>

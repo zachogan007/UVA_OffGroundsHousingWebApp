@@ -54,8 +54,18 @@ class Review(models.Model):
     review_text = models.TextField(max_length=20000, default="")
     pub_date = models.DateField(default=timezone.now())
     # profile = models.ForeignKey(Profile, related_name='reviews', on_delete=models.CASCADE)
-    listing = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE)
+    # listing = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE, default=None)
     rating = models.IntegerField(default=1)
 
     def __str__(self):
         return self.review_text
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+
+    def __str__(self):
+        return self.name

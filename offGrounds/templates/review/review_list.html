@@ -35,12 +35,10 @@
 
 <h3 class="subtitle"> All Reviews </h3>
 <div class="reviews-wrapper">
-    {% for review in listing.review.all %}
+    {% for loc in reviews %}
     <div class="notification space-below">
         <p>
-            <strong>Written By: </strong> {{ review.user.name }}
             <strong>Date: </strong> {{ review.pub_date }}
-            <strong>Rating </strong> {{ review.rating }}
         </p>
 
         {{review.review_text}}
