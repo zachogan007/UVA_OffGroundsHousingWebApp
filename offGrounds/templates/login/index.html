@@ -2,17 +2,13 @@
 {% load socialaccount %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
-<<<<<<< HEAD
-=======
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
->>>>>>> 42f6308b4cd7a7e4db7fd47c6174efca8a461f5f
 {% bootstrap_javascript %}
 
 
 {% if user.is_authenticated %}
 
-
-<<<<<<< HEAD
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
   <a class="navbar-brand text-white" href="#"><i class="bi bi-house"></i></a>
@@ -55,7 +51,6 @@
     <p>Welcome, you are logged in as {{user.username }}.</p>
     {%else%}
   </figure>
-=======
 <html>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
@@ -93,7 +88,6 @@
   <div class="container pt-5 ">
     <div class="row">
       <div class="col-md-10 mx-auto">
->>>>>>> 42f6308b4cd7a7e4db7fd47c6174efca8a461f5f
 
       </div>
     </div>
@@ -154,13 +148,12 @@
             </div>
         </div>
     </div>
-    {%else%}
+    {%endif%}
 
 
   <figure class="text-center">
     <h1> UVA Off-Grounds Housing </h1>
     <a class="btn btn-primary" href="{% provider_login_url 'google' %}" role="button">Login With Google</a></figure>
-    {%endif%}
 
         <div class="footer bg-light text-black mt-3 pt-2 pb-2">
           <div class="container">
@@ -198,10 +191,7 @@
               </div>
           </div>
       </div>
-<<<<<<< HEAD
   </div>
 </html>
-=======
   </body>
 </html>
->>>>>>> 42f6308b4cd7a7e4db7fd47c6174efca8a461f5f
