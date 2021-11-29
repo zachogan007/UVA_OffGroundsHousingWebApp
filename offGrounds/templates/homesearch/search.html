@@ -1,3 +1,4 @@
+{% load static %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
@@ -23,9 +24,7 @@
      <li>
        <a class="nav-item nav-link active text-sm text-white" href="#">Reviews</a>
      </li>
-     <li>
-        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
-     </li>
+      <li>
       <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
     </li>
      <li>
@@ -38,7 +37,13 @@
 
 <html>
 <body>
-{% if user.is_authenticated %}
+  {% if user.is_authenticated %}
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'calendar\css\styles.css' %}">
 <h1> Search for Housing  </h1>
 
 <br>

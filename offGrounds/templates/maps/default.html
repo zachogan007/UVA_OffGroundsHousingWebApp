@@ -1,3 +1,4 @@
+{% load static %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
@@ -15,8 +16,6 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
      <li class="navbar-nav">
-     <li>
-        <a class="nav-item nav-link active text-sm text-white" href="/login">Main</a>
      </li>
       <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
     </li>
@@ -41,7 +40,14 @@
 
 
 <html>
-{% if user.is_authenticated %}
+  {% if user.is_authenticated %}
+    <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'calendar\css\styles.css' %}">
 <head>
     <title>Interactive maps for Django web apps</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>

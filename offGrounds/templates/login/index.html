@@ -1,7 +1,7 @@
+{% load static %}
 {% load socialaccount %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
-
 {% bootstrap_javascript %}
 {% if user.is_authenticated %}
 
@@ -10,16 +10,13 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
-  <a class="navbar-brand text-white" href="#">Put name here</a>
+  <a class="navbar-brand text-white" href="#"><i class="bi bi-house"></i></a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
      <li class="navbar-nav">
-     <li>
-        <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
-     </li>
       <li>
       <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
     </li>
@@ -41,6 +38,13 @@
 </nav>
 <html>
   <body>
+      <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'calendar\css\styles.css' %}">
   <figure class="text-center">
     <h1> UVA Off-Grounds Housing </h1>
     <p>Welcome, you are logged in as {{user.username }}.</p>
