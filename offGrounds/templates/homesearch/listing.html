@@ -61,9 +61,6 @@
              <li>
               <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
             </li>
-            <li>
-                <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
-            </li>
              <li>
               <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
              </li>
@@ -92,46 +89,80 @@
           <b> Date Published: </b> <p> {{listing.pub_date}} </p>
         </div>
       </div>
+      
+<div class="footer bg-light text-black pt-2 mt-3 pb-2">
+      <div class="container">
+          <div class="row align-items-start">
+            <div class="col">
+              <i class="bi bi-instagram"></i>
+	       <a style="text-decoration: none"  href="https://www.instagram.com/uva_offground/">@uva_offground</a>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/homesearch">Listings</a>
+            </div>
+            <div class="col">
 
-        <div class="footer fixed-bottom bg-light text-black mt-6 pt-3 pb-2">
-                <div class="container">
-                      <div class="row align-items-start">
-                        <div class="col">
-                            <i class="bi bi-instagram"></i>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none" href="/homesearch">Homes</a>
-                        </div>
-                        <div class="col">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col">
+              <i class="bi bi-twitter"></i>
+	       <a style="text-decoration: none"  href="https://twitter.com/uva_offground">@uva_offground</a>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/reviews">Reviews</a>
+            </div>
+              <div class="col">
 
-                        </div>
-                      </div>
-                      <div class="row align-items-center">
-                        <div class="col">
-                         <i class="bi bi-twitter"></i>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none" href="#">Reviews</a>
-                        </div>
-                        <div class="col">
+              </div>
+          </div>
+          <div class="row align-items-end">
+            <div class="col">
+              <i class="bi bi-linkedin"></i>
+	       <a style="text-decoration: none"  href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/maps">Map</a>
+            </div>
+            <div class="col">
 
-                        </div>
-                      </div>
-                      <div class="row align-items-end">
-                        <div class="col">
-                          <i class="bi bi-linkedin"></i>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none" href="/maps">Map</a>
-                        </div>
-                        <div class="col">
+            </div>
+          </div>
+      </div>
+  </div>
+</body>
 
-                        </div>
-                      </div>
-                </div>
+    {%else%}
+    <html>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+      <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="navbar-nav">
+          <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Listings</a>
+        </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/maps">Map</a>
+         </li>
+         <li>
+           <a class="nav-item nav-link active text-sm text-white" href="/reviews">Reviews</a>
+         </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
+        </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
+         </li>
+       </ul>
         </div>
-
-        {%else%}
+      </div>
+    </nav>
     <p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
     {%endif%}
     </body>
