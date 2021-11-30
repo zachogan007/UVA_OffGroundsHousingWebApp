@@ -1,0 +1,80 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+{% bootstrap_javascript %}
+{% if user.is_authenticated %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">Put name here</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="navbar-nav">
+                <li>
+                    <a class="nav-item nav-link active text-sm text-white" href="/login">Main</a>
+                </li>
+                <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Homes</a>
+                </li>
+                <li>
+                    <a class="nav-item nav-link active text-sm text-white" href="/maps">Maps</a>
+                </li>
+                <li>
+                    <a class="nav-item nav-link active text-sm text-white" href="#">Reviews</a>
+                </li>
+                <li>
+                    <a class="nav-item nav-link active text-sm text-white" href="/profile">Account</a>
+                </li>
+                <li>
+                    <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h1> Account Management </h1>
+
+<center>
+    <form action="{% url 'account' }"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p class="text-center"> Username: {{user.username}}</p>
+        <p class="text-center"> First name: {{user.first_name}}</p>
+        <p class="text-center"> Last name: {{user.last_name}}</p>
+        <p class="text-center"> Email address: {{user.email}}</p>
+        <p class="text-center"> Date joined: {{user.date_joined}}</p>
+        <label for="year">Year:</label>
+        <select name="year" id="year">
+            <option value={{user.year}}></option>
+            <option value="1st">1st</option>
+            <option value="2nd">2nd</option>
+            <option value="3rd">3rd</option>
+            <option value="4th">4th</option>
+            <option value="Grad">Grad</option>
+        </select>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="phone_number">Phone Number: </label>
+                {{ form.phone_number }}
+                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder={{form.phone_number}}>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="instagram">Instagram</label>
+                {{ form.instagram }}
+                <input maxlength="12" type="text" class="form-control" id="instagram" name="instagram" placeholder={{form.instagram}}>
+            </div>
+        </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</center>
+
+{%else%}
+<html>
+<body>
+<figure class="text-center">
+    <h1> UVA Off-Grounds Housing </h1>
+    <a class="btn btn-primary" href="{% provider_login_url 'google' %}" role="button">Login With Google</a>
+    {%endif%}

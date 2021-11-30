@@ -17,4 +17,6 @@ urlpatterns = [
     path('homesearch/', views.search_view, name="search"),
     path('homesearch/listing/<int:pk>', views.ListingView.as_view(), name="listing"),
     path('calendar/', views.CalendarView.as_view(), name='calendar'),
+    path('profile/', views.account_view, name="account"),
+    path('manage_account/<int>:pk>', views.EditProfileView.as_view(), name="edit_account"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

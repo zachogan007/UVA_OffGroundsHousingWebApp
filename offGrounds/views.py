@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from .models import Listing
 from django.utils import timezone
@@ -10,6 +10,7 @@ from .filters import OrderFilter
 
 from datetime import datetime, timedelta, date
 from django.utils.safestring import mark_safe
+from .forms import AccountForm
 
 from .models import *
 from .calendar import Calendar
@@ -103,3 +104,72 @@ def next_month(d):
     next_month = last + timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
+
+def account_view(request):
+    user = UserInfo.objects.filter(user_key=request.user)
+    context = {'user_info': user}
+    return render(request, 'account/profile.html', context)
+    # if request.method == "POST":
+    #     form = AccountForm(request.POST)
+    #     if form.is_valid():
+    #         new_user_info = form.save(commit=False)
+    #         new_user_info.user_key = request.user
+    #         new_user_info.year = request.POST['year']
+    #         new_user_info.phone_number = request.POST['phone_number']
+    #         new_user_info.instagram = request.POST['instagram']
+    #         new_user_info.save()
+    #         return HttpResponseRedirect('account/manage_account.html')
+    #     else:
+    #         form = AccountForm
+    #     # new_user = User()
+    #     # new_user.username = request.POST.get("user_username", None)
+    #     # new_user.first_name = request.POST.get("user_first_name", None)
+    #     # new_user.last_name = request.POST.get("user_last_name", None)
+    #     # User.save(new_user)
+    # return render(request, 'account/manage_account.html', {'form':form, 'UserModel': UserModel.objects.filter(user_key=request.user)})
+
+class EditProfileView(generic.UpdateView):
+    model = UserInfo
+    template_name = 'account/manage_account.html'
+    fields = ['year', 'phone_number', 'instagram']
+    success_url = reverse_lazy('profile')
+    # def edit_profile(self, request):
+        # if request.method == "POST":
+        #     form = AccountForm(request.POST, instance=request.user)
+        #     if form.is_valid():
+        #         form.save()
+        #         # new_user_info.user_key = request.user
+        #         # new_user_info.year = request.POST['year']
+        #         # new_user_info.phone_number = request.POST['phone_number']
+        #         # new_user_info.instagram = request.POST['instagram']
+        #         # new_user_info.save()
+        #         return HttpResponseRedirect('/manage_account')
+        #     else:
+        #         form = AccountForm(instance=request.user)
+        #     return render(request, 'account/manage_account.html', {'form': form})
+        # return render(request, 'account/manage_account.html')
+            # new_user = User()
+            # new_user.username = request.POST.get("user_username", None)
+            # new_user.first_name = request.POST.get("user_first_name", None)
+            # new_user.last_name = request.POST.get("user_last_name", None)
+            # User.save(new_user)
+
+        # user = UserInfo.objects.filter(user_key=request.user)
+        # if request.method == "POST":
+        #     if not user:
+        #         u = UserInfo()
+        #         u.user_key = request.user
+        #         u.year = request.POST.get("year", None)
+        #         u.phone_number = request.POST.get("phone_number", None)
+        #         u.instagram = request.POST.get("instagram", None)
+        #         u.save()
+        #         return HttpResponseRedirect('/profile')
+        #     else:
+        #         print("ERERE")
+        #         year = request.POST.get("year", None)
+        #         phone_number = request.POST.get("phone_number", None)
+        #         instagram = request.POST.get("instagram", None)
+        #         user.update(year=year, phone_number=phone_number, instagram=instagram)
+        #         user.save()
+        #         return HttpResponseRedirect('/profile')
+        # return render(request, 'account/manage_account.html')
