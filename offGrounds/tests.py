@@ -39,17 +39,6 @@ class UserTestCase(TestCase):
         self.assertEqual(bob.__str__(), "bob")
 
 
-class ReviewTestCase(TestCase):
-
-    def setUp(self):
-        Review.objects.create(review_text="nice", pub_date=datetime.date.today())
-
-    def test_to_string(self):
-        # test the to string method for User
-        # expected return value: the user's name (for now, can change later)
-        review1 = Review.objects.get(review_text="nice")
-        self.assertEqual(review1.__str__(), "nice")
-
 
 # source: https://github.com/googleapis/google-api-python-client/blob/main/tests/test__auth.py
 class GoogleAuthTestCase(TestCase):
