@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+
 from .filters import ReviewFilter
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout
@@ -16,16 +17,39 @@ from .calendar import Calendar
 import calendar
 
 
+
 #Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
 def review_search(request):
-    reviews = Review.objects.all()
-    rFilter = ReviewFilter(request.GET, queryset=reviews)
-    reviews = rFilter.qs
-    context = {
-        'reviews': reviews, 'rFilter': rFilter
-    }
-    return render(request, 'review/review_list.html', context)
+     places = Listing.objects.all()
 
+     if request.method == 'POST':
+         place = request.POST.get('places', )
+         stars = request.POST.get('stars', 3)
+         content = request.POST.get('content', "")
+
+         review = Review.objects.create(stars=stars, content=content, place=place)
+         review.save()
+
+     reviews = Review.objects.all()
+     rFilter = ReviewFilter(request.GET, queryset=reviews)
+     reviews = rFilter.qs
+     context = {
+         'reviews': reviews, 'rFilter': rFilter, 'places': places
+     }
+     return render(request, 'review/review_list.html', context)
+
+
+def write_review(request):
+
+    if request.method =='POST':
+        stars = request.POST.get('stars', 3)
+        content = request.POST.get('content', "")
+
+        review = Review.objects.create(stars=stars, content=content)
+        review.save()
+    reviews=Review.objects.all()
+
+    return render(request, 'review/review_list.html', reviews)
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
@@ -115,6 +139,7 @@ def next_month(d):
     next_month = last + timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
+
 #class ReviewView(generic.DetailView):
  #  model = Review
   #template_name = 'review/review_list.html'
@@ -135,13 +160,4 @@ def next_month(d):
     #def get_queryset(self):
      #   return Review.objects.filter(pub_date_lte=timezone.now())
 
-    #def write_review(request):
-        #review = Review.objects.create(review_text="", rating=1)
-        #if request.method == "POST":
-            #rating = request.POST.get('rating', 3)
-            #review_text = request.POST.get('review_content', '')
-           # form = ReviewForm(request.POST)
-          #  form.save()
-         #   review = Review.objects.create(review_text=review_text, rating=rating)
-        #    return redirect('reviews/')
-       # return render(request, 'review/review_list.html', {'review': review})
+

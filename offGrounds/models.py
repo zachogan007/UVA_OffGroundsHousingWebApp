@@ -62,11 +62,13 @@ class Event(models.Model):
         return self.name
 
 class Review(models.Model):
-    place = models.TextField(max_length=200)
-    review_text = models.TextField(max_length=2000)
-    pub_date = models.DateTimeField(default=0.0)
-    rating = models.IntegerField(default=0, validators = [MaxValueValidator(5), MinValueValidator(0)])
+    place = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE, null=True)
+    content = models.TextField(blank=True, null=True)
+    stars = models.IntegerField()
+    #review_text = models.TextField(max_length=2000)
+    #pub_date = models.DateTimeField(default=0.0)
+    #rating = models.IntegerField(default=0, validators = [MaxValueValidator(5), MinValueValidator(0)])
 
 
-    def __str__(self):
-        return self.review_text
+    #def __str__(self):
+        #return self.review_text

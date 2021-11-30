@@ -61,7 +61,7 @@
   </div>
 </div>
 
-
+<!--
 <div class="row">
   <div class="col-md">
     <div class="card card-body">
@@ -78,8 +78,7 @@
 	<tr class="bg-light">
 	  <td>{{review.place}}</td>
       <td>{{review.pub_date}}</td>
-      <td>{{review.rating}}
-      <td>{{review.review_text}}</td>
+      <td>{{review.content}}</td>
 	</tr>
 
 	{% endfor %}
@@ -87,6 +86,76 @@
       </table>
     </div>
   </div>
+</div>-->
+
+<!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
+<h1>Post Reviews</h1>
+<div class="reviews-wrapper">
+    {% for rev in reviews %}
+    <div class="notification">
+        <p>
+            <strong>Stars: </strong>{{ rev.stars }}
+        </p>
+        {{ rev.content }}
+    </div>
+    {% empty %}
+    <div class="notifictation">
+        No reviews yet...
+    </div>
+    {% endfor %}
+</div>
+
+<div class="notification">
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        <div class="field">
+            <label>Stars</label>
+
+            <div class="control">
+                <div class="select">
+                    <select name="stars">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="field">
+            <label>Places</label>
+                <div class="control">
+                    <div class="select">
+                        <select name="place">
+                            {% for loc in places %}
+                            <option value="0 "selected> </option>
+                            <option>{{loc}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+        </div>
+
+        <div class="field">
+            <label>Content</label>
+
+            <div class="control">
+                <textarea class="textarea" name="content"></textarea>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-success">Submit</button>
+            </div>
+        </div>
+    </form>
+
 </div>
 
 {%else%}
