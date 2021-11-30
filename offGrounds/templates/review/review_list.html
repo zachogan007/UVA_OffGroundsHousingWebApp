@@ -7,6 +7,7 @@
 <html>
 <body>
 {% if user.is_authenticated %}
+<!--https://getbootstrap.com/docs/5.0/components/navbar/-->
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
       <div class="container-fluid">
       <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
@@ -43,7 +44,7 @@
     <h3> All Reviews </h3>
 </div>
 
-
+<!--Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ-->
 <div class="row">
   <div class="col">
     <div class="card card-body bg-light" >
@@ -60,33 +61,6 @@
     </div>
   </div>
 </div>
-
-<!--
-<div class="row">
-  <div class="col-md">
-    <div class="card card-body">
-      <table class="table table-sm">
-	<tr class="bg-info">
-	  <th>Place</th>
-	  <th>Date</th>
-	  <th>Rating </th>
-	  <th>Review</th>
-
-	</tr>
-
-	{% for review in reviews %}
-	<tr class="bg-light">
-	  <td>{{review.place}}</td>
-      <td>{{review.pub_date}}</td>
-      <td>{{review.content}}</td>
-	</tr>
-
-	{% endfor %}
-
-      </table>
-    </div>
-  </div>
-</div>-->
 
 <!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
 <h1>Post Reviews</h1>
@@ -105,6 +79,7 @@
     {% endfor %}
 </div>
 
+<!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
 <div class="notification">
     <form method="post" action=".">
         {% csrf_token %}
@@ -125,7 +100,7 @@
             </div>
         </div>
 
-
+<!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
         <div class="field">
             <label>Places</label>
                 <div class="control">
@@ -140,15 +115,15 @@
                 </div>
 
         </div>
-
+<!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
         <div class="field">
             <label>Content</label>
-
+<!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
             <div class="control">
                 <textarea class="textarea" name="content"></textarea>
             </div>
         </div>
-
+<!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
         <div class="field">
             <div class="control">
                 <button class="button is-success">Submit</button>
@@ -163,6 +138,8 @@
 {%endif%}
 
 </body>
+
+<!--Source Columns: https://getbootstrap.com/docs/5.0/layout/columns/-->
 <div class="footer bg-light text-black pt-2 mt-3 pb-2">
       <div class="container">
           <div class="row align-items-start">
