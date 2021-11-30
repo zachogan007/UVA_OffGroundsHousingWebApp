@@ -10,6 +10,7 @@
 <body>
 
 {% if user.is_authenticated %}
+<!--https://getbootstrap.com/docs/5.0/components/navbar/-->
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
   <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
@@ -39,10 +40,12 @@
   </div>
 </nav>
 
+<!--Source Position: https://getbootstrap.com/docs/5.0/utilities/position/-->
 <div class="text-center mt-3 pt-2 mb-3 pb-2 bg-light p-2">
   <h3> Properties </h3>
 </div>
 
+<!--Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ-->
 <div class="row">
   <div class="col">
     <div class="card card-body bg-light" >
@@ -59,7 +62,7 @@
 </div>
 
 
-
+<!--Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ-->
 <div class="row">
   <div class="col-md">
     <div class="card card-body">
@@ -125,6 +128,7 @@
 <p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
 {%endif%}
 
+<!--Source Columns: https://getbootstrap.com/docs/5.0/layout/columns/-->
 <div class="footer bg-light text-black pt-2 mt-3 pb-2">
       <div class="container">
           <div class="row align-items-start">

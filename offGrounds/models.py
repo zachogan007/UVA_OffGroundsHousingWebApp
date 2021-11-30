@@ -61,12 +61,8 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+#https://www.programcreek.com/python/example/99929/django.db.models.CASCADE
 class Review(models.Model):
-    place = models.TextField(max_length=200)
-    review_text = models.TextField(max_length=2000)
-    pub_date = models.DateTimeField(default=0.0)
-    rating = models.IntegerField(default=0, validators = [MaxValueValidator(5), MinValueValidator(0)])
-
-
-    def __str__(self):
-        return self.review_text
+    place = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE, null=True)
+    content = models.TextField(blank=True, null=True)
+    stars = models.IntegerField()

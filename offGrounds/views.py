@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+
 from .filters import ReviewFilter
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout
@@ -16,16 +17,26 @@ from .calendar import Calendar
 import calendar
 
 
-#Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
-def review_search(request):
-    reviews = Review.objects.all()
-    rFilter = ReviewFilter(request.GET, queryset=reviews)
-    reviews = rFilter.qs
-    context = {
-        'reviews': reviews, 'rFilter': rFilter
-    }
-    return render(request, 'review/review_list.html', context)
 
+
+def review_search(request):
+     places = Listing.objects.all()
+    #Source: https://www.youtube.com/watch?v=Y5vvGQyHtpM
+     if request.method == 'POST':
+         place = request.POST.get('places', )
+         stars = request.POST.get('stars', 3)
+         content = request.POST.get('content', "")
+
+         review = Review.objects.create(stars=stars, content=content, place=place)
+         review.save()
+     # Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
+     reviews = Review.objects.all()
+     rFilter = ReviewFilter(request.GET, queryset=reviews)
+     reviews = rFilter.qs
+     context = {
+         'reviews': reviews, 'rFilter': rFilter, 'places': places
+     }
+     return render(request, 'review/review_list.html', context)
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
@@ -56,9 +67,6 @@ def logout_view(request):
 #Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
 def search_view(request):
     listings = Listing.objects.all()
-
-    # beds = Listing.objects.get(id=num_beds)
-    # baths = Listing.objects.get(id=num_baths)
 
     myFilter = OrderFilter(request.GET, queryset=listings)
     listings = myFilter.qs
@@ -115,33 +123,4 @@ def next_month(d):
     next_month = last + timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
-#class ReviewView(generic.DetailView):
- #  model = Review
-  #template_name = 'review/review_list.html'
 
-   # def get_queryset(self):
-
-    #    return Review.objects.filter(pub_date__lte=timezone.now)
-
-    #latest_review_list = Review.objects.all()
-    #context={
-     #   'latest_review_list': latest_review_list,
-    #}
-    #return render(request, 'review/review_list.html', context)
-    #model = Review
-    #template_name = 'review/review_list.html'
-
-
-    #def get_queryset(self):
-     #   return Review.objects.filter(pub_date_lte=timezone.now())
-
-    #def write_review(request):
-        #review = Review.objects.create(review_text="", rating=1)
-        #if request.method == "POST":
-            #rating = request.POST.get('rating', 3)
-            #review_text = request.POST.get('review_content', '')
-           # form = ReviewForm(request.POST)
-          #  form.save()
-         #   review = Review.objects.create(review_text=review_text, rating=rating)
-        #    return redirect('reviews/')
-       # return render(request, 'review/review_list.html', {'review': review})
