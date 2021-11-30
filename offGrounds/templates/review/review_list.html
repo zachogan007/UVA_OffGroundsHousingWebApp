@@ -90,6 +90,36 @@
 </div>
 
 {%else%}
+<html>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+      <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="navbar-nav">
+          <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Listings</a>
+        </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/maps">Map</a>
+         </li>
+         <li>
+           <a class="nav-item nav-link active text-sm text-white" href="/reviews">Reviews</a>
+         </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
+        </li>
+         <li>
+          <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
+         </li>
+       </ul>
+        </div>
+      </div>
+    </nav>
 <p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
 {%endif%}
 
@@ -98,10 +128,11 @@
       <div class="container">
           <div class="row align-items-start">
             <div class="col">
-                <i class="bi bi-instagram"></i>
+              <i class="bi bi-instagram"></i>
+	       <a style="text-decoration: none"  href="https://www.instagram.com/uva_offground/">@uva_offground</a>
             </div>
             <div class="col">
-                <a style="text-decoration: none" href="/homesearch">Homes</a>
+                <a style="text-decoration: none" href="/homesearch">Listings</a>
             </div>
             <div class="col">
 
@@ -109,10 +140,11 @@
           </div>
           <div class="row align-items-center">
             <div class="col">
-             <i class="bi bi-twitter"></i>
+              <i class="bi bi-twitter"></i>
+	       <a style="text-decoration: none"  href="https://twitter.com/uva_offground">@uva_offground</a>
             </div>
             <div class="col">
-                <a style="text-decoration: none" href="#">Reviews</a>
+                <a style="text-decoration: none" href="/reviews">Reviews</a>
             </div>
               <div class="col">
 
@@ -121,6 +153,7 @@
           <div class="row align-items-end">
             <div class="col">
               <i class="bi bi-linkedin"></i>
+	       <a style="text-decoration: none"  href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
             </div>
             <div class="col">
                 <a style="text-decoration: none" href="/maps">Map</a>
@@ -131,6 +164,8 @@
           </div>
       </div>
   </div>
+</body>
+
 </html>
 
 
