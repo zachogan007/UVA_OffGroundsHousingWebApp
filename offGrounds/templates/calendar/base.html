@@ -39,9 +39,16 @@
 </nav>
     <link rel="stylesheet" type="text/css" href="{% static 'calendar\css\styles.css' %}">
 
+    
 
           {% block content %}
           {% endblock %}
+
+          {% block contents %}
+          {% endblock %}
+
+  
+
 
 {%else%}
 <html>
@@ -77,46 +84,52 @@
 <p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
 {%endif%}
 
-<div class="footer bg-light text-black pt-2 mt-3 pb-2">
-      <div class="container">
-          <div class="row align-items-start">
-            <div class="col">
-              <i class="bi bi-instagram"></i>
-	       <a style="text-decoration: none"  href="https://www.instagram.com/uva_offground/">@uva_offground</a>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/homesearch">Listings</a>
-            </div>
-            <div class="col">
-
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col">
-              <i class="bi bi-twitter"></i>
-	       <a style="text-decoration: none"  href="https://twitter.com/uva_offground">@uva_offground</a>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/reviews">Reviews</a>
-            </div>
-              <div class="col">
-
-              </div>
-          </div>
-          <div class="row align-items-end">
-            <div class="col">
-              <i class="bi bi-linkedin"></i>
-	       <a style="text-decoration: none"  href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/maps">Map</a>
-            </div>
-            <div class="col">
-
-            </div>
-          </div>
-      </div>
-  </div>
 </body>
 
-</html>
+<footer>
+	<div class="footer bg-light text-black pt-2 mt-3 pb-2">
+		<div class="container">
+			<div class="row align-items-start">
+			  <div class="col">
+				<i class="bi bi-instagram"></i>
+			 <a style="text-decoration: none"  href="https://www.instagram.com/uva_offground/">@uva_offground</a>
+			  </div>
+			  <div class="col">
+				  <a style="text-decoration: none" href="/homesearch">Listings</a>
+			  </div>
+			  <div class="col">
+	
+			  </div>
+			</div>
+			<div class="row align-items-center">
+			  <div class="col">
+				<i class="bi bi-twitter"></i>
+			 <a style="text-decoration: none"  href="https://twitter.com/uva_offground">@uva_offground</a>
+			  </div>
+			  <div class="col">
+				  <a style="text-decoration: none" href="/reviews">Reviews</a>
+			  </div>
+				<div class="col">
+	
+				</div>
+			</div>
+			<div class="row align-items-end">
+			  <div class="col">
+				<i class="bi bi-linkedin"></i>
+			 <a style="text-decoration: none"  href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
+			  </div>
+			  <div class="col">
+				  <a style="text-decoration: none" href="/maps">Map</a>
+			  </div>
+			  <div class="col">
+	
+			  </div>
+			</div>
+		</div>
+	</div>
+	
+	
+	</html>
+	</footer>
+
+

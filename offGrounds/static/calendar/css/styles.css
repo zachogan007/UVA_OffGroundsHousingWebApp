@@ -17,7 +17,7 @@
 
 .calendar td {
   width: 200px;
-  height: 150px;
+  height: 125px;
   padding: 20px 0px 0px 5px;
 }
 
@@ -56,4 +56,29 @@ a {
 
 .clearfix {
   margin: 15px;
+}
+
+footer {
+  position: fixed;
+  margin-top: 30%;
+  height: 50; 
+  width: 100%;
+  text-align: center;
+  
+  bottom: 45;
+}
+footer ul {
+  list-style-type: none;
+
+}
+
+footer a{
+
+color: royalblue;
+}
+
+
+footer ul li {
+  display: inline;
+  margin: 0 15px; 
 }
