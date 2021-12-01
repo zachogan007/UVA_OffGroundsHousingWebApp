@@ -69,6 +69,7 @@
     <div class="notification">
         <p>
             <strong>Stars: </strong>{{ rev.stars }}
+            <strong>Listing: </strong>{{ rev.place }}
         </p>
         {{ rev.content }}
         {{ rev.place }}
@@ -111,7 +112,7 @@
 <!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
 <h1>Write Review</h1>
 <div class="notification">
-    <form method="post" action=".">
+    <form method="POST" action=".">
         {% csrf_token %}
 
         <div class="field">
@@ -166,6 +167,7 @@
 </div>
 
 {%else%}
+<html>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
@@ -199,49 +201,49 @@
 <p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
 {%endif%}
 
-</body>
 
-<!--Source Columns: https://getbootstrap.com/docs/5.0/layout/columns/-->
-<div class="footer bg-light text-black pt-2 mt-3 pb-2">
-    <div class="container">
-        <div class="row align-items-start">
-            <div class="col">
-                <i class="bi bi-instagram"></i>
-                <a style="text-decoration: none" href="https://www.instagram.com/uva_offground/">@uva_offground</a>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/homesearch">Listings</a>
-            </div>
-            <div class="col">
+<footer>
+    <div class="footer bg-light text-black pt-2 mt-3 pb-2">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col">
+                    <i class="bi bi-instagram"></i>
+                    <a style="text-decoration: none" href="https://www.instagram.com/uva_offground/">@uva_offground</a>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/homesearch">Listings</a>
+                </div>
+                <div class="col">
 
+                </div>
             </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col">
-                <i class="bi bi-twitter"></i>
-                <a style="text-decoration: none" href="https://twitter.com/uva_offground">@uva_offground</a>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/reviews">Reviews</a>
-            </div>
-            <div class="col">
+            <div class="row align-items-center">
+                <div class="col">
+                    <i class="bi bi-twitter"></i>
+                    <a style="text-decoration: none" href="https://twitter.com/uva_offground">@uva_offground</a>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/reviews">Reviews</a>
+                </div>
+                <div class="col">
 
+                </div>
             </div>
-        </div>
-        <div class="row align-items-end">
-            <div class="col">
-                <i class="bi bi-linkedin"></i>
-                <a style="text-decoration: none" href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/maps">Map</a>
-            </div>
-            <div class="col">
+            <div class="row align-items-end">
+                <div class="col">
+                    <i class="bi bi-linkedin"></i>
+                    <a style="text-decoration: none"
+                       href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/maps">Map</a>
+                </div>
+                <div class="col">
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
-
 </html>
+</footer>
