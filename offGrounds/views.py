@@ -34,7 +34,7 @@ def review_search(request):
      rFilter = ReviewFilter(request.GET, queryset=reviews)
      reviews = rFilter.qs
      context = {
-         'reviews': reviews, 'rFilter': rFilter, 'places': places
+          'reviews': reviews, 'rFilter': rFilter, 'places': places
      }
      return render(request, 'review/review_list.html', context)
 
