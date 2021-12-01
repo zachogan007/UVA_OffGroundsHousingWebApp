@@ -37,11 +37,10 @@
     </div>
   </div>
 </nav>
+  {% block content %}
+    {% endblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'calendar\css\styles.css' %}">
 
-
-          {% block content %}
-          {% endblock %}
 
 {%else%}
 <html>
@@ -77,6 +76,7 @@
 <p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
 {%endif%}
 
+<footer>
 <div class="footer bg-light text-black pt-2 mt-3 pb-2">
       <div class="container">
           <div class="row align-items-start">
@@ -118,5 +118,6 @@
       </div>
   </div>
 </body>
-
 </html>
+</footer>
+
