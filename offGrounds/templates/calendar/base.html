@@ -37,11 +37,10 @@
     </div>
   </div>
 </nav>
+  {% block content %}
+    {% endblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'calendar\css\styles.css' %}">
 
-
-          {% block content %}
-          {% endblock %}
 
 {%else%}
 <html>
@@ -118,5 +117,5 @@
       </div>
   </div>
 </body>
-
 </html>
+

@@ -60,7 +60,8 @@
 </div>
 
 <!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
-<h1>Post Reviews</h1>
+<h1>Reviews</h1>
+<!--
 <div class="reviews-wrapper">
     {% for rev in reviews %}
     <div class="notification">
@@ -68,6 +69,7 @@
             <strong>Stars: </strong>{{ rev.stars }}
         </p>
         {{ rev.content }}
+        {{ rev.place }}
     </div>
     {% empty %}
     <div class="notifictation">
@@ -75,8 +77,37 @@
     </div>
     {% endfor %}
 </div>
+-->
+
+<div class="row">
+  <div class="col-md">
+    <div class="card card-body">
+      <table class="table table-sm">
+	<tr class="bg-info">
+	  <th>Place: </th>
+	  <th>Stars: </th>
+	  <th>Review: </th>
+
+
+	</tr>
+	{% for rev in reviews %}
+	<tr class="bg-light">
+	  <td>{{rev.place}}</td>
+	  <td>{{rev.stars}}</td>
+	  <td>{{rev.content}}</td>
+	</tr>
+	{% empty %}
+	<tr class="bg-light">
+	  <td>No reviews yet...</td>
+	</tr>
+    {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
 
 <!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
+<h1>Write Review</h1>
 <div class="notification">
     <form method="post" action=".">
         {% csrf_token %}
@@ -122,8 +153,9 @@
         </div>
 <!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
         <div class="field">
-            <div class="control">
-                <button class="button is-success">Submit</button>
+            <div class="control py-3">
+              	   <button class="btn btn-primary" type="submit">
+	  Submit</button>
             </div>
         </div>
     </form>
