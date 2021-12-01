@@ -23,11 +23,11 @@ def review_search(request):
      places = Listing.objects.all()
     #Source: https://www.youtube.com/watch?v=Y5vvGQyHtpM
      if request.method == 'POST':
-         place = request.POST.get('places', )
+         place = request.POST.get('place', )
          stars = request.POST.get('stars', 3)
          content = request.POST.get('content', "")
-
-         review = Review.objects.create(stars=stars, content=content, place=place)
+         temp = Listing.objects.get(name=place)
+         review = Review.objects.create(stars=stars, content=content, place=temp)
          review.save()
      # Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
      reviews = Review.objects.all()
