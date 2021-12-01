@@ -78,23 +78,6 @@ class GoogleAuthTestCase(TestCase):
         user.save()
         logged_out = user.is_logged_in
         self.assertFalse(logged_out)
-        """
-        def test_login_sim(self):
-        self.c = Client()
-        self.user = User.objects.create(name="bob@gmail.com",password="12345")
-        self.user.set_password("newPassword")
-        self.user.save()
-        self.user = authenticate(name="bob@gmail.com", password="newPassword")
-        login = self.c.login(name="bob@gmail.com", password="newPassword")
-        self.assertTrue(login)     
 
-    def logout2_test_url(self):
-        pass
-
-        def test_logout_url(self):
-        request = HttpRequest()
-        response = logout(request)
-        html = response.content.decode('utf8')
-        self.assertTrue(html.startswith('html'))
-        #self.assertTemplateUsed(response, 'logout_index.html')
-     """
+class ReviewsTestCase(TestCase):
+    
