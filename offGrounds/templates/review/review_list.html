@@ -67,6 +67,7 @@
     <div class="notification">
         <p>
             <strong>Stars: </strong>{{ rev.stars }}
+            <strong>Listing: </strong>{{ rev.place }}
         </p>
         {{ rev.content }}
         {{ rev.place }}
@@ -109,7 +110,7 @@
 <!--https://www.youtube.com/watch?v=Y5vvGQyHtpM-->
 <h1>Write Review</h1>
 <div class="notification">
-    <form method="post" action=".">
+    <form method="POST" action=".">
         {% csrf_token %}
 
         <div class="field">
