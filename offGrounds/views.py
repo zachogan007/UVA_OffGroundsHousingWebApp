@@ -1,18 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
-
-from django.http import HttpResponse, Http404
-from django.contrib.auth import logout
-from django.views import generic
-from .models import Listing, Review  # , Pin
-from django.utils import timezone
-from .filters import OrderFilter
-from .forms import ReviewForm
-
-from .models import Listing  # , Pin
-from django.utils import timezone
-from .filters import OrderFilter
 from django.shortcuts import render, get_object_or_404
 
+from .filters import ReviewFilter
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout
 from django.urls import reverse
@@ -28,6 +16,27 @@ from .models import *
 from .calendar import Calendar
 import calendar
 
+
+
+
+def review_search(request):
+     places = Listing.objects.all()
+    #Source: https://www.youtube.com/watch?v=Y5vvGQyHtpM
+     if request.method == 'POST':
+         place = request.POST.get('places', )
+         stars = request.POST.get('stars', 3)
+         content = request.POST.get('content', "")
+
+         review = Review.objects.create(stars=stars, content=content, place=place)
+         review.save()
+     # Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
+     reviews = Review.objects.all()
+     rFilter = ReviewFilter(request.GET, queryset=reviews)
+     reviews = rFilter.qs
+     context = {
+          'reviews': reviews, 'rFilter': rFilter, 'places': places
+     }
+     return render(request, 'review/review_list.html', context)
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
@@ -55,23 +64,9 @@ def logout_view(request):
     logout(request)
     return render(request, 'logout/logout_index.html')
 
-
+#Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
 def search_view(request):
     listings = Listing.objects.all()
-    # beds = Listing.objects.get(id=num_beds)
-    # baths = Listing.objects.get(id=num_baths)
-
-    myFilter = OrderFilter(request.GET, queryset=listings)
-    listings = myFilter.qs
-
-    # beds = Listing.objects.get(id=num_beds)
-    # baths = Listing.objects.get(id=num_baths)
-
-    myFilter = OrderFilter(request.GET, queryset=listings)
-    listings = myFilter.qs
-
-    # beds = Listing.objects.get(id=num_beds)
-    # baths = Listing.objects.get(id=num_baths)
 
     myFilter = OrderFilter(request.GET, queryset=listings)
     listings = myFilter.qs
@@ -80,10 +75,6 @@ def search_view(request):
     return render(request, 'homesearch/search.html',
                   {'all_listings': listings, 'myFilter': myFilter})
 
-
-# def listing_view(request):
-# make context
-#     return render(request, 'homesearch/listing.html', context)
 
 
 class ListingView(generic.DetailView):
@@ -95,54 +86,6 @@ class ListingView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         return Listing.objects.filter(pub_date__lte=timezone.now())
-
-
-
-def write_review(request, listing_id):
-    # listing = Listing.objects.filter(pub_date__lte=timezone.now())
-    # listing.save()
-    review = Review.objects.create(review_text="", rating=1, listing=None)
-    url = "homesearch/listing/" + listing_id +"/review"
-
-    try:
-        listing = Listing.objects.get(pk=listing_id)
-    except Listing.DoesNotExist:
-        raise Http404("listing does not exist")
-    if request.method == 'POST':
-        rating = request.POST.get('rating', 3)
-        review_text = request.POST.get('review_content', '')
-        form = ReviewForm(request.POST)
-        form.save()
-        review = Review.objects.create(review_text=review_text, rating=rating, listing=listing)
-        print(listing_id)
-        print(url)
-        return redirect("homesearch/listing/1/review")
-    else:
-        form = ReviewForm()
-
-    return render(request, 'homesearch/review.html', {'review': review})
-
-
-
-class ReviewListView(generic.ListView):
-    model = Review
-    template_name = 'review/review_list.html'
-    context_object_name = 'reviews'
-
-    def get_queryset(self):
-        return Review.objects.all()
-
-
-def review_list(request):
-    reviews = Review.objects.all()
-    context = {
-        'reviews': reviews
-    }
-    return render(request, 'review/review_list.html', context)
-
-
-def user_view(request):
-    return render(request, 'userprofile/profile_index.html')
 
 
 class CalendarView(generic.ListView):

@@ -1,10 +1,11 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 import datetime
 from django.utils import timezone
 
 
 # Create your models here.
-class Profile(models.Model):
+class User(models.Model):
     name = models.TextField(max_length=2000)
     password = models.TextField(max_length=2000, default="")
     is_logged_in = False
@@ -38,7 +39,7 @@ class Listing(models.Model):
     size = models.FloatField(default=0.0)
     longitude = models.FloatField(default=0.0)
     latitude = models.FloatField(default=0.0)
-    pub_date = models.DateTimeField(default=timezone.now())
+    pub_date = models.DateTimeField(default=0.0)
     image = models.ImageField(upload_to='images')
     laundry = models.CharField(max_length=200, default="", blank=True)
     parking = models.CharField(max_length=200, default="", blank=True)
@@ -50,17 +51,6 @@ class Listing(models.Model):
         return self.name
 
 
-class Review(models.Model):
-    review_text = models.TextField(max_length=20000, default="")
-    pub_date = models.DateField(default=timezone.now())
-    # profile = models.ForeignKey(Profile, related_name='reviews', on_delete=models.CASCADE)
-    # listing = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE, default=None)
-    rating = models.IntegerField(default=1)
-
-    def __str__(self):
-        return self.review_text
-
-
 class Event(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
@@ -69,3 +59,10 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# https://www.programcreek.com/python/example/99929/django.db.models.CASCADE
+class Review(models.Model):
+    place = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE, null=True)
+    content = models.TextField(blank=True, null=True)
+    stars = models.IntegerField()
