@@ -67,7 +67,7 @@ class Review(models.Model):
     content = models.TextField(blank=True, null=True)
     stars = models.IntegerField()
 
-
+# https://dev.to/earthcomfy/django-user-profile-3hik
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     year = models.TextField(default="N/A")

@@ -1,4 +1,3 @@
-
 {% load socialaccount %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
@@ -45,45 +44,15 @@
 </nav>
 
 <div class="text-center mt-3 pt-2 mb-3 pb-2 bg-light p-2" >
-    <h3>Edit Profile</h3>
+    <h3>Profile</h3>
 </div>
 <center>
-<div class="row my-3 p-3">
-</div>
-{% if user_form.errors %}
-<div class="alert alert-danger alert-dismissible" role="alert">
-    <div id="form_errors">
-        {% for key, value in user_form.errors.items %}
-        <strong>{{ value }}</strong>
-        {% endfor %}
-    </div>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-{% endif %}
-<div class="form-content">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-row">
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="small mb-1">Username:</label>
-                    {{ user_form.username }}
-                    <label class="small mb-1">Email:</label>
-                    {{ user_form.email }}
-                    <label class="small mb-1">First Name:</label>
-                    {{ user_form.first_name }}
-                    <label class="small mb-1">Last Name:</label>
-                    {{ user_form.last_name }}
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-        <button type="reset" class="btn btn-primary">Reset</button>
-    </form>
-</div>
+<p class="text-center"> Username: {{user.username}}</p>
+<p class="text-center"> First name: {{user.first_name}}</p>
+<p class="text-center"> Last name: {{user.last_name}}</p>
+<p class="text-center"> Email address: {{user.email}}</p>
+<p class="text-center"> Date joined: {{user.date_joined}}</p>
+    <a type="submit" class="btn btn-primary" href="/profile">Edit</a>
 </center>
 
 {%else%}
@@ -122,7 +91,6 @@
 </nav>
 <p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
 {%endif%}
-
 
 <!--Source Columns: https://getbootstrap.com/docs/5.0/layout/columns/-->
 <footer>
