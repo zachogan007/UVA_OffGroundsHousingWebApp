@@ -17,26 +17,25 @@ from .calendar import Calendar
 import calendar
 
 
-
-
 def review_search(request):
-     places = Listing.objects.all()
-    #Source: https://www.youtube.com/watch?v=Y5vvGQyHtpM
-     if request.method == 'POST':
-         place = request.POST.get('place', )
-         stars = request.POST.get('stars', 3)
-         content = request.POST.get('content', "")
-         temp = Listing.objects.get(name=place)
-         review = Review.objects.create(stars=stars, content=content, place=temp)
-         review.save()
-     # Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
-     reviews = Review.objects.all()
-     rFilter = ReviewFilter(request.GET, queryset=reviews)
-     reviews = rFilter.qs
-     context = {
-          'reviews': reviews, 'rFilter': rFilter, 'places': places
-     }
-     return render(request, 'review/review_list.html', context)
+    places = Listing.objects.all()
+    # Source: https://www.youtube.com/watch?v=Y5vvGQyHtpM
+    if request.method == 'POST':
+        place = request.POST.get('place', )
+        stars = request.POST.get('stars', 3)
+        content = request.POST.get('content', "")
+        temp = Listing.objects.get(name=place)
+        review = Review.objects.create(stars=stars, content=content, place=temp)
+        review.save()
+    # Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
+    reviews = Review.objects.all()
+    rFilter = ReviewFilter(request.GET, queryset=reviews)
+    reviews = rFilter.qs
+    context = {
+        'reviews': reviews, 'rFilter': rFilter, 'places': places
+    }
+    return render(request, 'review/review_list.html', context)
+
 
 def index(request):
     return HttpResponse("Hello, world. You're at the UVA off grounds housing index.")
@@ -60,11 +59,19 @@ def default_map(request):
                   {'mapbox_access_token': mapbox_access_token, 'all_listings': listings})
 
 
+def direction_map(request):
+    mapbox_access_token = 'pk.my_mapbox_access_token'
+    listings = Listing.objects.all()
+    return render(request, 'maps/direction.html',
+                  {'mapbox_access_token': mapbox_access_token, 'all_listings': listings})
+
+
 def logout_view(request):
     logout(request)
     return render(request, 'logout/logout_index.html')
 
-#Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
+
+# Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
 def search_view(request):
     listings = Listing.objects.all()
 
@@ -74,7 +81,6 @@ def search_view(request):
     context = {'listings': listings, 'myFilter': myFilter}
     return render(request, 'homesearch/search.html',
                   {'all_listings': listings, 'myFilter': myFilter})
-
 
 
 class ListingView(generic.DetailView):

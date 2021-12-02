@@ -79,5 +79,31 @@ class GoogleAuthTestCase(TestCase):
         logged_out = user.is_logged_in
         self.assertFalse(logged_out)
 
+
 class ReviewsTestCase(TestCase):
-    
+    def setUp(self):
+        place1 = Listing.objects.create(name="1800 JPA", address="1800 Jefferson Park Ave.", num_beds=2, num_bath2=1.0)
+        place2 = Listing.objects.create(name="1900 JPA", address="1900 Jefferson Park Ave.", num_beds=3, num_bath2=2.0)
+        place3 = Listing.objects.create(name="Woodrow", address="102 Stadium Ave", num_beds=4, num_bath2=4.0)
+        Review.objects.create(content="nice", stars=3.0, place=place1)
+        Review.objects.create(content="no dryer in unit", stars=2.0, place=place2)
+        Review.objects.create(content="great location", stars=5.0, place=place3)
+        Review.objects.create(content="it's ok", stars=2.0, place=place2)
+
+    def review1_test_to_string(self):
+        review1 = Review.objects.get(place=place1)
+        self.assertEqual(review1.__str__(), "nice")
+        self.assertFalse(review1.__str__(), "wrong one")
+
+    def review1_test_stars(self):
+        review1 = Review.objects.get(place=place1)
+        self.assertEquals(review1.get_stars(), 2.0)
+
+    def review1_test_place(self):
+        review2 = Review.objects.get(place=place2)
+        self.assertEquals(review2.get_stars(), 2.0)
+
+
+
+
+
