@@ -106,3 +106,14 @@ class GoogleAuthTestCase(TestCase):
         #self.assertTemplateUsed(response, 'logout_index.html')
      """
 # testing ideas/approaches for urls: query against the website --> for example: do something like ..,url/list
+"""
+class ListingFilterTestCase(TestCase):
+    def setUp(self):
+        Listing.objects.create(name="1800 jpa", address="1800 Jefferson Park Ave. Charlottesville, VA 22903", num_baths=3.0, num_beds=3)
+
+    def filter_test_1(self):
+        get = {Listing.objects.get(name="1800 jpa").pk}
+        listings = Listing.objects.all()
+        list_ordered = OrderFilter(get, queryset=listings)
+        self.assertTrue(len(list(list_ordered.qs)), 1)
+"""
