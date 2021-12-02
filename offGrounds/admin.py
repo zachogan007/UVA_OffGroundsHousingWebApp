@@ -25,5 +25,5 @@ admin.site.register(Event)
 # admin.site.register(Pin)
 
 admin.site.register(Review)
-
+admin.site.register(Profile)
 

@@ -124,3 +124,6 @@ def next_month(d):
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
 
+
+def profile(request):
+    return render(request, 'account/profile.html')
