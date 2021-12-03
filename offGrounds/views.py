@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .filters import ReviewFilter
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout
 from django.urls import reverse
 from django.views import generic
-from .models import Listing  # , Pin
+from .models import Listing
 from django.utils import timezone
 from .filters import OrderFilter
 
@@ -15,8 +15,10 @@ from django.utils.safestring import mark_safe
 from .models import *
 from .calendar import Calendar
 import calendar
+from .forms import UpdateUserForm
 
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def review_search(request):
@@ -124,3 +126,21 @@ def next_month(d):
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
 
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+
+        if user_form.is_valid():
+            user_form.save()
+           # messages.success(request, 'Your profile is updated successfully')
+            return redirect('/view_profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+
+    return render(request, 'account/profile.html', {'user_form': user_form})
+
+def view_profile(request):
+    return render(request, 'account/view_profile.html')

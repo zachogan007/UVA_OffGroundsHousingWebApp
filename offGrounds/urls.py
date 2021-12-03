@@ -18,6 +18,8 @@ urlpatterns = [
     path('homesearch/listing/<int:pk>', views.ListingView.as_view(), name="listing"),
     path('calendar/', views.CalendarView.as_view(), name='calendar'),
     path('reviews/', views.review_search, name='review'),
+    path('profile/', views.profile, name='users-profile'),
+    path('view_profile/', views.view_profile, name='view-profile'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
