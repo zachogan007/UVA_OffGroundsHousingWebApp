@@ -34,8 +34,8 @@ class User(models.Model):
 class Listing(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    beds = models.IntegerField(default=0)
-    baths = models.FloatField(default=0.0)
+    num_beds = models.IntegerField(default=0)
+    num_baths = models.FloatField(default=0.0)
     rent = models.FloatField(default=0.0)
     size = models.FloatField(default=0.0)
     longitude = models.FloatField(default=0.0)
