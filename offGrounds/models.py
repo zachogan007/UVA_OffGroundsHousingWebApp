@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 import datetime
 from django.utils import timezone
@@ -77,3 +78,12 @@ class Review(models.Model):
         return self.place.name
 
 
+# https://dev.to/earthcomfy/django-user-profile-3hik
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    year = models.TextField(default="N/A")
+    phone_number = models.CharField(max_length=12, default="000-000-0000")
+    instagram = models.CharField(max_length=200, default="N/A")
+
+    def __str__(self):
+        return self.user.username
