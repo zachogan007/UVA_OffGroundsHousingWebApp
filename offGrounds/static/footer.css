@@ -1,0 +1,23 @@
+.footer {
+
+  width: 100%;
+  left: 0;
+  text-align: center;
+  bottom: 0;
+}
+
+footer ul {
+  list-style-type: none;
+
+}
+
+footer a{
+
+color: royalblue;
+}
+
+
+footer ul li {
+  display: inline;
+  margin: 0 15px;
+}

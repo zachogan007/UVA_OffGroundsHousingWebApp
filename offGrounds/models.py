@@ -64,6 +64,7 @@ class Event(models.Model):
 
 #https://www.programcreek.com/python/example/99929/django.db.models.CASCADE
 class Review(models.Model):
+    user = models.CharField(max_length=20, blank=True, null=True)
     place = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE, null=True)
     content = models.TextField(blank=True, null=True)
     stars = models.IntegerField()

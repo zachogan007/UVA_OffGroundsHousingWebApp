@@ -3,206 +3,167 @@
 {% bootstrap_css %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 {% bootstrap_javascript %}
-
+<!--https://getbootstrap.com/docs/5.0/components/navbar/-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+          <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+               <li class="navbar-nav"></li>
+              <li>
+              <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Listings</a>
+            </li>
+             <li>
+              <a class="nav-item nav-link active text-sm text-white" href="/maps">Map</a>
+             </li>
+             <li>
+               <a class="nav-item nav-link active text-sm text-white" href="/reviews">Reviews</a>
+             </li>
+             <li>
+              <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
+            </li>
+               <li>
+                   <a class="nav-item nav-link active text-sm text-white" href="/view_profile">Profile</a>
+               </li>
+             <li>
+              <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
+             </li>
+           </ul>
+          </div>
+      </div>
+    </nav>
 
 {% if user.is_authenticated %}
 
 
 <html>
-  <body>
-  <!--https://getbootstrap.com/docs/5.0/components/navbar/-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-      <div class="container-fluid">
-      <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li class="navbar-nav">
-          <li>
-          <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Listings</a>
-        </li>
-         <li>
-          <a class="nav-item nav-link active text-sm text-white" href="/maps">Map</a>
-         </li>
-         <li>
-           <a class="nav-item nav-link active text-sm text-white" href="/reviews">Reviews</a>
-         </li>
-         <li>
-          <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
-        </li>
-           <li>
-               <a class="nav-item nav-link active text-sm text-white" href="/view_profile">Profile</a>
-           </li>
-         <li>
-          <a class="nav-item nav-link active text-sm text-white" href="/logout">Logout</a>
-         </li>
-       </ul>
+    <body>
+
+
+      <header>
+         <div class="d-flex justify-content-center flex-column text-center bg-light">
+           <div class="card w-100">
+            <img src="../media/images/rotunda_.jpg" class="img-fluid">
+          </div>
         </div>
-      </div>
-    </nav>
- <!-- <header class="d-flex justify-content-center flex-column text-center bg-light" style="max-height: 600px;   min-height: 400px;">
-  <div class="container pt-5 ">
-    <div class="row">
-      <div class="col-md-10 mx-auto">
-        <div class="card">
-          <img src="media\images\rotunda_.jpg" class="img-fluid">
-        </div>
-      </div>
-    </div>
-  </div>
-</header> -->
-  <header>
-     <div class="d-flex justify-content-center flex-column text-center bg-light">
-       <div class="card w-100">
-        <img src="../media/images/rotunda_.jpg" class="img-fluid">
-      </div>
-    </div>
-  
-  </header>
 
-  
-
-  <!--Source Accordian: https://getbootstrap.com/docs/5.0/components/accordion/-->
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingOne">
-         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          Mission
-          </button>
-        </h2>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Our mission is to provide University of Virginia students with an easy-to-use, free service for them to explore and discover various housing options across the Charlottesville area. We do this by providing listings, maps, and housing details that our clients can use to search for their perfect off-grounds apartment or house. We have also included an easy to use calender to schedule housing apointments and visitations. You can also search reviews that have been left by previous tenants and customers to ensure you are making the correct decision.</div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-           Members
-          </button>
-        </h2>
-        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Our founding members include Mike Kosar, Zac Hogan, Thu Nguyen, Nicole Casco, and Jen Gully. We strive to provide our visitors with a great experience in finding their new apartment! </div>
-        </div>
-      </div>
-    </div>
-
-  <!--Source Cards: https://getbootstrap.com/docs/5.0/components/card/-->
-    <div class="container">
-        <div class="row align-items-start">
-            <div class="col">
-                <div class="card" style="width: 16rem;">
-                  <div class="card-body">
-                    <h5 class="card-title">John H.</h5>
-                    <p class="card-text">"This website was amazing! I found my perfect apartment here."</p>
-                    <a href="/reviews" class="btn btn-primary">Go to Reviews</a>
-                  </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 16rem;">
-                  <div class="card-body">
-                    <h5 class="card-title">Jenna C.</h5>
-                    <p class="card-text">"Finding this was a life saver, we were running out of time and needed to find a place to live soon. Then I found this service!"</p>
-                    <a href="/reviews" class="btn btn-primary">Go to Reviews</a>
-                  </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 16rem;">
-                  <div class="card-body">
-                    <h5 class="card-title">Matt R.</h5>
-                    <p class="card-text">"I can't believe everything I needed was in one place! It made searching for a new place so easy."</p>
-                    <a href="/reviews" class="btn btn-primary">Go to Reviews</a>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {%else%}
-    
-<html>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-      <div class="container-fluid">
-      <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li class="navbar-nav">
-          <li>
-          <a class="nav-item nav-link active text-sm text-white" href="/homesearch">Listings</a>
-        </li>
-         <li>
-          <a class="nav-item nav-link active text-sm text-white" href="/maps">Map</a>
-         </li>
-         <li>
-           <a class="nav-item nav-link active text-sm text-white" href="/reviews">Reviews</a>
-         </li>
-         <li>
-          <a class="nav-item nav-link active text-sm text-white" href="/calendar">Events</a>
-         </li>
-	    <li>
-               <a class="nav-item nav-link active text-sm text-white" href="/view_profile">Profile</a>
-           </li>
-         <li>
-          <a class="nav-item nav-link active text-sm text-white" href="/login">Login</a>
-         </li>
-       </ul>
-        </div>
-      </div>
-    </nav>
-  <figure class="text-center">
-    <h1> UVA Off-Grounds Housing </h1>
-    <a class="btn btn-primary" href="{% provider_login_url 'google' %}" role="button">Login With Google</a></figure>
-    {%endif%}
+      </header>
 
 
-  <!--Source Columns: https://getbootstrap.com/docs/5.0/layout/columns/-->
 
-<div class="footer bg-light text-black pt-2 mt-3 pb-2">
-      <div class="container">
-          <div class="row align-items-start">
-            <div class="col">
-              <i class="bi bi-instagram"></i>
-	       <a style="text-decoration: none"  href="https://www.instagram.com/uva_offground/">@uva_offground</a>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/homesearch">Listings</a>
-            </div>
-            <div class="col">
-
+      <!--Source Accordian: https://getbootstrap.com/docs/5.0/components/accordion/-->
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Mission
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Our mission is to provide University of Virginia students with an easy-to-use, free service for them to explore and discover various housing options across the Charlottesville area. We do this by providing listings, maps, and housing details that our clients can use to search for their perfect off-grounds apartment or house. We have also included an easy to use calender to schedule housing apointments and visitations. You can also search reviews that have been left by previous tenants and customers to ensure you are making the correct decision.</div>
             </div>
           </div>
-          <div class="row align-items-center">
-            <div class="col">
-              <i class="bi bi-twitter"></i>
-	       <a style="text-decoration: none"  href="https://twitter.com/uva_offground">@uva_offground</a>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+               Members
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Our founding members include Mike Kosar, Zac Hogan, Thu Nguyen, Nicole Casco, and Jen Gully. We strive to provide our visitors with a great experience in finding their new apartment! </div>
             </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/reviews">Reviews</a>
-            </div>
-              <div class="col">
+          </div>
+        </div>
 
+      <!--Source Cards: https://getbootstrap.com/docs/5.0/components/card/-->
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                          <p>"This website was amazing! I found my perfect apartment here."</p>
+                          <footer class="blockquote-footer">John H.</footer>
+                        </blockquote>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                          <p>"Finding this was a life saver, we were running out of time and needed to find a place to live soon. Then I found this service!"</p>
+                          <footer class="blockquote-footer">Jenna C.</footer>
+                        </blockquote>
+                      </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                          <p>"I can't believe everything I needed was in one place! It made searching for a new place so easy."</p>
+                          <footer class="blockquote-footer">Matt R.</footer>
+                        </blockquote>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%else%}
+
+      <figure class="text-center">
+        <h1> UVA Off-Grounds Housing </h1>
+        <a class="btn btn-primary" href="{% provider_login_url 'google' %}" role="button">Login With Google</a></figure>
+        {%endif%}
+
+
+      <!--Source Columns: https://getbootstrap.com/docs/5.0/layout/columns/-->
+
+        <div class="footer bg-light text-black pt-2 mt-3 pb-2">
+          <div class="container">
+              <div class="row align-items-start">
+                <div class="col">
+                  <i class="bi bi-instagram"></i>
+               <a style="text-decoration: none"  href="https://www.instagram.com/uva_offground/">@uva_offground</a>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/homesearch">Listings</a>
+                </div>
+                <div class="col">
+
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col">
+                  <i class="bi bi-twitter"></i>
+               <a style="text-decoration: none"  href="https://twitter.com/uva_offground">@uva_offground</a>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/reviews">Reviews</a>
+                </div>
+                  <div class="col">
+
+                  </div>
+              </div>
+              <div class="row align-items-end">
+                <div class="col">
+                  <i class="bi bi-linkedin"></i>
+               <a style="text-decoration: none"  href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
+                </div>
+                <div class="col">
+                    <a style="text-decoration: none" href="/maps">Map</a>
+                </div>
+                <div class="col">
+
+                </div>
               </div>
           </div>
-          <div class="row align-items-end">
-            <div class="col">
-              <i class="bi bi-linkedin"></i>
-	       <a style="text-decoration: none"  href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
-            </div>
-            <div class="col">
-                <a style="text-decoration: none" href="/maps">Map</a>
-            </div>
-            <div class="col">
-
-            </div>
-          </div>
       </div>
-  </div>
-</body>
+    </body>
 
 </html>
