@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import sys
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap5',
     'login',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -162,7 +162,6 @@ RECAPTCHA = "6LcCivkcAAAAABn5xspSDcQQmCHHALf4goAsfw-4"
 
 RECAPTCHA_SECRET_KEY = "6LcCivkcAAAAALYORtWd7aGpky6ZzLd5TC8KcVtU"
 #**end note******************************************
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
