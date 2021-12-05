@@ -60,7 +60,7 @@ a {
 
 
 footer {
- 
+  position: fixed;
   margin-top: 30%;
   height: 50;
   width: 100%;

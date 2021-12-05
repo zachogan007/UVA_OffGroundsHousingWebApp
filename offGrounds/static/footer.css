@@ -1,23 +1,7 @@
 .footer {
-  position: fixed;
+  position: ;
   left: 0;
   bottom: 0;
   width: 100%;
 
-}
-
-footer ul {
-  list-style-type: none;
-
-}
-
-footer a{
-
-color: royalblue;
-}
-
-
-footer ul li {
-  display: inline;
-  margin: 0 15px;
 }
