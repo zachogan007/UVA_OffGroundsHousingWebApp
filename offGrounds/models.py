@@ -66,6 +66,7 @@ class Review(models.Model):
     place = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE, null=True)
     content = models.TextField(blank=True, null=True)
     stars = models.IntegerField()
+    posted_by = models.CharField(default='anonymous', max_length=200)
 
 # https://dev.to/earthcomfy/django-user-profile-3hik
 class Profile(models.Model):
