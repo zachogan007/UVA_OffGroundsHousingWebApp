@@ -60,12 +60,12 @@ a {
 
 
 footer {
-  position: fixed;
+ 
   margin-top: 30%;
-  height: 50; 
+  height: 50;
   width: 100%;
   text-align: center;
-  
+
   bottom: 45;
 }
 footer ul {
