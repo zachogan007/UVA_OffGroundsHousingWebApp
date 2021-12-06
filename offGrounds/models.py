@@ -67,6 +67,10 @@ class Review(models.Model):
     place = models.ForeignKey(Listing, related_name='reviews', on_delete=models.CASCADE, null=True)
     content = models.TextField(blank=True, null=True)
     stars = models.IntegerField()
+    posted_by = models.CharField(default='anonymous', max_length=200)
+
+    def __str__(self):
+        return self.content
 
     def __str__(self):
         return self.content

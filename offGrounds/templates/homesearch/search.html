@@ -1,12 +1,13 @@
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+{% load static %}
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}">
 
 <html>
-
 <body>
 
 {% if user.is_authenticated %}
@@ -67,40 +68,80 @@
 
 
 <!--Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ-->
-<div class="row">
-    <div class="col-md">
-        <div class="card card-body">
-            <table class="table table-sm">
-                <tr class="bg-info">
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Beds</th>
-                    <th>Baths</th>
-                    <th>Rent ($)</th>
-                    <th>Size (sqr. ft.)</th>
+{% for loc in all_listings %}
+<div class="container">
+    <div class="row">
+        <div class="col">
 
-                </tr>
-                {% for loc in all_listings %}
-                <tr class="bg-light">
-                    <td><a class="nav-link" href="/homesearch/listing/{{loc.id}}">{{loc.name}}</a></td>
-                    <td>{{loc.address}}</td>
-                    <td>{{loc.num_beds}}</td>
-                    <td>{{loc.num_baths}}</td>
-                    <td>{{loc.rent}}</td>
-                    <td>{{loc.size}}</td>
-                </tr>
+        </div>
+        <div class="col center pt-3 pb-3">
+            <div class="card" style="width: 50rem;">
+                <div class="card-header bg-info text-white">
+                    {{loc.name}}
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light">Address: {{loc.address}}</li>
+                    <li class="list-group-item bg-light">Beds: {{loc.num_beds}}</li>
+                    <li class="list-group-item bg-light">Baths: {{loc.num_baths}}</li>
+                    <li class="list-group-item bg-light">Rent: ${{loc.rent}}</li>
+                    <li class="list-group-item bg-light">Size: {{loc.size}} sqr ft.</li>
+                </ul>
+                <a href="/homesearch/listing/{{loc.id}}" class="btn btn-info">Go to Listing</a>
+            </div>
+        </div>
+        <div class="col">
 
-                {% endfor %}
-
-            </table>
         </div>
     </div>
 </div>
+{% empty %}
+<tr class="bg-light">
+    <td>No listings...</td>
+</tr>
+{% endfor %}
+<!--Source Columns: https://getbootstrap.com/docs/5.0/layout/columns/-->
+<div class="footer bg-light text-black pt-2 mt-3 pb-2">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col">
+                <i class="bi bi-instagram"></i>
+                <a style="text-decoration: none" href="https://www.instagram.com/uva_offground/">@uva_offground</a>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/homesearch">Listings</a>
+            </div>
+            <div class="col">
 
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col">
+                <i class="bi bi-twitter"></i>
+                <a style="text-decoration: none" href="https://twitter.com/uva_offground">@uva_offground</a>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/reviews">Reviews</a>
+            </div>
+            <div class="col">
 
+            </div>
+        </div>
+        <div class="row align-items-end">
+            <div class="col">
+                <i class="bi bi-linkedin"></i>
+                <a style="text-decoration: none" href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/maps">Map</a>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</div>
 {%else%}
-<html>
-<body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
         <a class="navbar-brand text-white" href="/login"><i class="bi bi-house"></i></a>
@@ -134,52 +175,49 @@
     </div>
 </nav>
 <p1> You are not logged in. Please go to the "Login" tab to log in.</p1>
-{%endif%}
-
 
 <!--Source Columns: https://getbootstrap.com/docs/5.0/layout/columns/-->
-<footer>
-    <div class="footer bg-light text-black pt-2 mt-3 pb-2">
-        <div class="container">
-            <div class="row align-items-start">
-                <div class="col">
-                    <i class="bi bi-instagram"></i>
-                    <a style="text-decoration: none" href="https://www.instagram.com/uva_offground/">@uva_offground</a>
-                </div>
-                <div class="col">
-                    <a style="text-decoration: none" href="/homesearch">Listings</a>
-                </div>
-                <div class="col">
-
-                </div>
+<div class="footer fixed-bottom bg-light text-black pt-2 mt-3 pb-2">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col">
+                <i class="bi bi-instagram"></i>
+                <a style="text-decoration: none" href="https://www.instagram.com/uva_offground/">@uva_offground</a>
             </div>
-            <div class="row align-items-center">
-                <div class="col">
-                    <i class="bi bi-twitter"></i>
-                    <a style="text-decoration: none" href="https://twitter.com/uva_offground">@uva_offground</a>
-                </div>
-                <div class="col">
-                    <a style="text-decoration: none" href="/reviews">Reviews</a>
-                </div>
-                <div class="col">
-
-                </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/homesearch">Listings</a>
             </div>
-            <div class="row align-items-end">
-                <div class="col">
-                    <i class="bi bi-linkedin"></i>
-                    <a style="text-decoration: none"
-                       href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
-                </div>
-                <div class="col">
-                    <a style="text-decoration: none" href="/maps">Map</a>
-                </div>
-                <div class="col">
+            <div class="col">
 
-                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col">
+                <i class="bi bi-twitter"></i>
+                <a style="text-decoration: none" href="https://twitter.com/uva_offground">@uva_offground</a>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/reviews">Reviews</a>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="row align-items-end">
+            <div class="col">
+                <i class="bi bi-linkedin"></i>
+                <a style="text-decoration: none" href="https://www.linkedin.com/in/uva-off-ground-housing-b1207739/">@uva_offground</a>
+            </div>
+            <div class="col">
+                <a style="text-decoration: none" href="/maps">Map</a>
+            </div>
+            <div class="col">
+
             </div>
         </div>
     </div>
+</div>
+{%endif%}
+
 </body>
 </html>
-</footer>

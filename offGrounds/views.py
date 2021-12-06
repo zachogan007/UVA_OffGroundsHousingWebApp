@@ -21,7 +21,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
-
 def review_search(request):
     places = Listing.objects.all()
     # Source: https://www.youtube.com/watch?v=Y5vvGQyHtpM
@@ -29,8 +28,11 @@ def review_search(request):
         place = request.POST.get('place', )
         stars = request.POST.get('stars', 3)
         content = request.POST.get('content', "")
+        posted_by = request.POST.get('posted_by', "")
+        if posted_by == "":
+            posted_by = "anonymous"
         temp = Listing.objects.get(name=place)
-        review = Review.objects.create(stars=stars, content=content, place=temp)
+        review = Review.objects.create(stars=stars, content=content, place=temp, posted_by=posted_by)
         review.save()
     # Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
     reviews = Review.objects.all()
@@ -61,13 +63,6 @@ def default_map(request):
     mapbox_access_token = 'pk.my_mapbox_access_token'
     listings = Listing.objects.all()
     return render(request, 'maps/default.html',
-                  {'mapbox_access_token': mapbox_access_token, 'all_listings': listings})
-
-
-def direction_map(request):
-    mapbox_access_token = 'pk.my_mapbox_access_token'
-    listings = Listing.objects.all()
-    return render(request, 'maps/direction.html',
                   {'mapbox_access_token': mapbox_access_token, 'all_listings': listings})
 
 
@@ -136,6 +131,7 @@ def next_month(d):
     return month
 
 
+# https://dev.to/earthcomfy/django-update-user-profile-33ho
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -143,12 +139,20 @@ def profile(request):
 
         if user_form.is_valid():
             user_form.save()
-           # messages.success(request, 'Your profile is updated successfully')
+            # messages.success(request, 'Your profile is updated successfully')
             return redirect('/view_profile')
     else:
         user_form = UpdateUserForm(instance=request.user)
 
     return render(request, 'account/profile.html', {'user_form': user_form})
 
+
 def view_profile(request):
     return render(request, 'account/view_profile.html')
+
+
+def direction_map(request):
+    mapbox_access_token = 'pk.my_mapbox_access_token'
+    listings = Listing.objects.all()
+    return render(request, 'maps/direction.html',
+                  {'mapbox_access_token': mapbox_access_token, 'all_listings': listings})
