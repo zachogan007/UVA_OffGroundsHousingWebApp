@@ -7,6 +7,7 @@ from django_filters import CharFilter, NumberFilter, NumericRangeFilter
 class OrderFilter(django_filters.FilterSet):
     address = CharFilter(field_name='address', lookup_expr='icontains')
     rent = NumberFilter(field_name='rent', lookup_expr='lte')
+    size = NumberFilter(field_name='size', lookup_expr='gte')
     class Meta:
         model = Listing
         fields = '__all__'
