@@ -28,8 +28,11 @@ def review_search(request):
          place = request.POST.get('place', )
          stars = request.POST.get('stars', 3)
          content = request.POST.get('content', "")
+         posted_by = request.POST.get('posted_by', "")
+         if posted_by == "":
+             posted_by = "anonymous"
          temp = Listing.objects.get(name=place)
-         review = Review.objects.create(stars=stars, content=content, place=temp)
+         review = Review.objects.create(stars=stars, content=content, place=temp, posted_by=posted_by)
          review.save()
      # Source: https://www.youtube.com/watch?v=G-Rct7Na0UQ
      reviews = Review.objects.all()
@@ -127,7 +130,7 @@ def next_month(d):
     return month
 
 
-
+# https://dev.to/earthcomfy/django-update-user-profile-33ho
 @login_required
 def profile(request):
     if request.method == 'POST':
