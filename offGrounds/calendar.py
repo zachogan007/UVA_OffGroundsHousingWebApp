@@ -38,3 +38,9 @@ class Calendar(HTMLCalendar):
 		for week in self.monthdays2calendar(self.year, self.month):
 			cal += f'{self.formatweek(week, events)}\n'
 		return cal
+
+
+#citation: some inforamtion borrowed from: 
+#https://www.w3schools.com/html/html_css.asp
+#https://www.huiwenteo.com/normal/2018/07/24/django-calendar.html
+#This citation also extends to base.html and calendar.html
