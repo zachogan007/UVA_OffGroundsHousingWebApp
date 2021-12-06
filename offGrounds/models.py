@@ -68,6 +68,9 @@ class Review(models.Model):
     stars = models.IntegerField()
     posted_by = models.CharField(default='anonymous', max_length=200)
 
+    def __str__(self):
+        return self.content
+
 # https://dev.to/earthcomfy/django-user-profile-3hik
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
