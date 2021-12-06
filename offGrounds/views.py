@@ -29,6 +29,8 @@ def review_search(request):
         stars = request.POST.get('stars', 3)
         content = request.POST.get('content', "")
         posted_by = request.POST.get('posted_by', "")
+        if place == "" or content == "":
+            return render(request, 'review/invalid_review.html')
         if posted_by == "":
             posted_by = "anonymous"
         temp = Listing.objects.get(name=place)
